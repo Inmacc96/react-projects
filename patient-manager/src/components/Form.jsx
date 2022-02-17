@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 
 function Form() {
-  const [name, setName] = useState('');
-  const [owner, setOwner] = useState('');
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
-  const [symptoms, setSymptoms] = useState('');
+  const [name, setName] = useState("");
+  const [owner, setOwner] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+  const [symptoms, setSymptoms] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Previene la opción por defecto y lo validas antes de enviar el formulario
-    console.log("Enviando Formulario");
+
+    // Validation Form
+    if ([name, owner, email, date, symptoms].includes("")) {
+      console.log("Hay al menos un campo vacío");
+    } else {
+      console.log("Todos llenos");
+    }
   };
 
   return (
