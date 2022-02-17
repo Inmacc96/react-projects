@@ -7,14 +7,16 @@ function Form() {
   const [date, setDate] = useState("");
   const [symptoms, setSymptoms] = useState("");
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Previene la opción por defecto y lo validas antes de enviar el formulario
 
     // Validation Form
     if ([name, owner, email, date, symptoms].includes("")) {
-      console.log("Hay al menos un campo vacío");
+      setError(true);
     } else {
-      console.log("Todos llenos");
+      setError(false);
     }
   };
 
@@ -31,6 +33,11 @@ function Form() {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
       >
+        {error && (
+          <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded">
+            <p>Todos los campos son obligatorios</p>
+          </div>
+        )}
         <div className="mb-5">
           <label
             htmlFor="petname"
