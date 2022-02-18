@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Form() {
+function Form({ patients, setPatients }) {
   const [name, setName] = useState("");
   const [owner, setOwner] = useState("");
   const [email, setEmail] = useState("");
@@ -15,9 +15,23 @@ function Form() {
     // Validation Form
     if ([name, owner, email, date, symptoms].includes("")) {
       setError(true);
-    } else {
-      setError(false);
+      return;
     }
+    setError(false);
+
+    // Patient Object
+    const patientObject = {
+      name,
+      owner,
+      email,
+      date,
+      symptoms,
+    };
+
+    setPatients([...patients, patientObject]);
+    // Gracias a este método inmutable(hace una copia de patients), le
+    // añadimos el objeto del paciente y el modificador setPatients se
+    // encarga de actualizar el estado patients
   };
 
   return (

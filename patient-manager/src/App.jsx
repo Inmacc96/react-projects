@@ -1,14 +1,21 @@
+import { useState } from "react";
 import Form from "./components/Form";
 import Header from "./components/Header";
 import PatientsList from "./components/PatientsList";
 
 function App() {
+
+  const [patients, setPatients] = useState([]);
+
   return (
     <div className="container mx-auto mt-20">
-      <Header />
+      <Header 
+      />
 
       <div className="mt-12 md:flex">
-        <Form />
+        <Form 
+        patients = {patients}
+        setPatients={setPatients}/>
         <PatientsList />
       </div>
     </div>
@@ -16,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+ 
