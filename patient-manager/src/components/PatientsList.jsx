@@ -1,6 +1,6 @@
 import Patient from "./Patient";
 
-function PatientsList({ patients }) {
+function PatientsList({ patients, setPatient }) {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       {patients && patients.length ? (
@@ -12,7 +12,7 @@ function PatientsList({ patients }) {
           </p>
 
           {patients.map((patient) => (
-            <Patient key={patient.id} patient={patient} />
+            <Patient key={patient.id} patient={patient} setPatient={setPatient} />
           ))}
         </>
       ) : (
