@@ -10,6 +10,13 @@ function Form({ patients, setPatients }) {
 
   const [error, setError] = useState(false);
 
+  const generateId = () => {
+    const random = Math.random().toString(36).substring(2);
+    const date = Date.now().toString(36);
+
+    return random + date;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Previene la opción por defecto y lo validas antes de enviar el formulario
 
@@ -27,6 +34,7 @@ function Form({ patients, setPatients }) {
       email,
       date,
       symptoms,
+      id: generateId(),
     };
 
     setPatients([...patients, patientObject]);
@@ -56,7 +64,11 @@ function Form({ patients, setPatients }) {
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
       >
         {/* {error && <Error message='Todos los campos son obligatorios' />} */}
-        {error && <Error><p>Todos los campos son obligatorios</p></Error>}
+        {error && (
+          <Error>
+            <p>Todos los campos son obligatorios</p>
+          </Error>
+        )}
         <div className="mb-5">
           <label
             htmlFor="petname"
