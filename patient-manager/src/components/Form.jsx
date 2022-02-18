@@ -32,6 +32,13 @@ function Form({ patients, setPatients }) {
     // Gracias a este método inmutable(hace una copia de patients), le
     // añadimos el objeto del paciente y el modificador setPatients se
     // encarga de actualizar el estado patients
+
+    // Reset form
+    setName("");
+    setOwner("");
+    setEmail("");
+    setDate("");
+    setSymptoms("");
   };
 
   return (
