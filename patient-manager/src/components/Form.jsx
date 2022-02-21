@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-function Form({ patients, setPatients, patient }) {
+function Form({ patients, setPatients, patient, setPatient }) {
   const [name, setName] = useState("");
   const [owner, setOwner] = useState("");
   const [email, setEmail] = useState("");
@@ -44,13 +44,27 @@ function Form({ patients, setPatients, patient }) {
       email,
       date,
       symptoms,
-      id: generateId(),
     };
 
-    setPatients([...patients, patientObject]);
-    // Gracias a este método inmutable(hace una copia de patients), le
-    // añadimos el objeto del paciente y el modificador setPatients se
-    // encarga de actualizar el estado patients
+    // Check whether we are editing or creating a new record.
+    if (patient.id) {
+      // Editing record
+      patientObject.id = patient.id;
+
+      const updatePatients = patients.map((patientState) =>
+        patientState.id === patient.id ? patientObject : patientState
+      );
+
+      setPatients(updatePatients);
+      setPatient({});
+    } else {
+      // New record
+      (patientObject.id = generateId()),
+        setPatients([...patients, patientObject]);
+      // Gracias a este método inmutable(hace una copia de patients), le
+      // añadimos el objeto del paciente y el modificador setPatients se
+      // encarga de actualizar el estado patients
+    }
 
     // Reset form
     setName("");
@@ -170,7 +184,7 @@ function Form({ patients, setPatients, patient }) {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-          value= {patient.id ? 'Editar Paciente' : 'Agregar Paciente'}
+          value={patient.id ? "Editar Paciente" : "Agregar Paciente"}
         />
       </form>
     </div>
