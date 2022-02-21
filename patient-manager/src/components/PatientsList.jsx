@@ -1,8 +1,9 @@
 import Patient from "./Patient";
 
-function PatientsList({ patients, setPatient }) {
+function PatientsList({ patients, setPatient, deletePatient }) {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
+      {/* En la condición estamos viendo que el array patients existe y además tiene algún elemento */}
       {patients && patients.length ? (
         <>
           <h2 className="font-black text-3xl text-center">Listado Pacientes</h2>
@@ -12,7 +13,12 @@ function PatientsList({ patients, setPatient }) {
           </p>
 
           {patients.map((patient) => (
-            <Patient key={patient.id} patient={patient} setPatient={setPatient} />
+            <Patient
+              key={patient.id}
+              patient={patient}
+              setPatient={setPatient}
+              deletePatient={deletePatient}
+            />
           ))}
         </>
       ) : (
