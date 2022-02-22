@@ -1,9 +1,22 @@
-import React from "react";
+import { useState } from "react";
+import Text from "./Text";
 
-const NewBudget = ({budget, setBudget}) => {
+const NewBudget = ({ budget, setBudget }) => {
+  const [text, setText] = useState("");
+
+  const handleBudget = (e) => {
+    e.preventDefault();
+
+    //budget is string
+    if (!Number(budget) || Number(budget) < 0) {
+      setText("No es un presupuesto válido");
+    } else {
+      setText("Si es un presupuesto válido");
+    }
+  };
   return (
     <div className="contenedor-presupuesto contenedor sombra">
-      <form className="formulario">
+      <form onSubmit={handleBudget} className="formulario">
         <div className="campo">
           <label>Definir Presupuesto</label>
 
@@ -17,6 +30,7 @@ const NewBudget = ({budget, setBudget}) => {
         </div>
 
         <input type="submit" value="Añadir" />
+        {text && <Text type="error">{text}</Text>}
       </form>
     </div>
   );
