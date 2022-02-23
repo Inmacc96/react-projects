@@ -1,10 +1,15 @@
-
-const Expenditure = ({expenditure}) => {
+const Expenditure = ({ expenditure }) => {
+  const { category, name, amount, id, date } = expenditure;
   return (
-    <div>
-        <p>Desde expenditure jsx</p>
+    <div className="gasto sombra">
+      <div className="contenido-gasto">
+        <div className="descripcion-gasto">
+          <p className="categoria">{category}</p>
+          <p className="nombre-gasto">{name}</p>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Expenditure
+export default Expenditure;
