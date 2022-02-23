@@ -24,6 +24,7 @@ function App() {
 
   const saveExpenditure = (expenditure) => {
     expenditure.id = generateId();
+    expenditure.date = Date.now();
     setExpenses([...expenses, expenditure]);
 
     setAnimateModal(false);
