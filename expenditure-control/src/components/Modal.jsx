@@ -5,7 +5,7 @@ import CloseBtn from "../img/cerrar.svg";
 const Modal = ({
   setModal,
   animateModal,
-  setanimateModal,
+  setAnimateModal,
   saveExpenditure,
 }) => {
   const [text, setText] = useState("");
@@ -14,7 +14,7 @@ const Modal = ({
   const [category, setCategory] = useState("");
 
   const hideModal = () => {
-    setanimateModal(false);
+    setAnimateModal(false);
     setTimeout(() => {
       setModal(false);
     }, 500);
