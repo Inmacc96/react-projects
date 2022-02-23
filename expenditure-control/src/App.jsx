@@ -10,12 +10,18 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animateModal, setanimateModal] = useState(false);
 
+  const [expenses, setExpenses] = useState([]);
+
   const handleNewExpenditure = () => {
     setModal(true);
 
     setTimeout(() => {
       setanimateModal(true);
     }, 500);
+  };
+
+  const saveExpenditure = (expenditure) => {
+    console.log(expenditure)
   };
 
   return (
@@ -42,6 +48,7 @@ function App() {
           setModal={setModal}
           animateModal={animateModal}
           setanimateModal={setanimateModal}
+          saveExpenditure={saveExpenditure}
         />
       )}
     </div>

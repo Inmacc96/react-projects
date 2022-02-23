@@ -1,26 +1,57 @@
 import { useState } from "react";
+import Text from "./Text";
 import CloseBtn from "../img/cerrar.svg";
 
-const Modal = ({ setModal, animateModal, setanimateModal }) => {
+const Modal = ({
+  setModal,
+  animateModal,
+  setanimateModal,
+  saveExpenditure,
+}) => {
+  const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
 
   const hideModal = () => {
     setanimateModal(false);
-
     setTimeout(() => {
       setModal(false);
     }, 500);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if ([name, category].includes("")) {
+      setText("Todos los campos son obligatorios");
+      setTimeout(() => {
+        setText("");
+      }, 3000);
+      return;
+    } else if (amount <= 0) {
+      setText("Cantidad no válida. Inserte una cantidad positiva");
+      setTimeout(() => {
+        setText("");
+      }, 3000);
+      return;
+    }
+
+    saveExpenditure({ name, amount, category });
+  };
+
   return (
     <div className="modal">
       <div className="cerrar-modal">
         <img src={CloseBtn} alt="Close Modal" onClick={hideModal} />
       </div>
 
-      <form className={`formulario ${animateModal ? "animar" : "cerrar"}`}>
+      <form
+        onSubmit={handleSubmit}
+        className={`formulario ${animateModal ? "animar" : "cerrar"}`}
+      >
         <legend>Nuevo Gasto</legend>
+        {text && <Text type="error">{text}</Text>}
 
         <div className="campo">
           <label htmlFor="name">Nombre Gasto</label>
