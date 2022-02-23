@@ -86,13 +86,13 @@ const Modal = ({
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">-- Seleccione --</option>
-            <option value="saving">Ahorro</option>
-            <option value="food">Comida</option>
-            <option value="house">Casa</option>
-            <option value="miscellaneous">Gastos Varios</option>
-            <option value="leisure">Ocio</option>
-            <option value="health">Salud</option>
-            <option value="subscription">Suscripciones</option>
+            <option value="Ahorro">Ahorro</option>
+            <option value="Comida">Comida</option>
+            <option value="Casa">Casa</option>
+            <option value="Gastos">Gastos Varios</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Salud">Salud</option>
+            <option value="Suscripciones">Suscripciones</option>
           </select>
         </div>
 
