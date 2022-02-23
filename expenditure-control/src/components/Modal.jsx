@@ -1,14 +1,22 @@
 import CloseBtn from "../img/cerrar.svg";
 
-const Modal = ({ setModal }) => {
+const Modal = ({ setModal, animateModal, setanimateModal }) => {
   const hideModal = () => {
-    setModal(false);
+    setanimateModal(false);
+
+    setTimeout(() => {
+      setModal(false);
+    }, 500);
   };
   return (
-    <div class="modal">
-      <div class="cerrar-modal">
+    <div className="modal">
+      <div className="cerrar-modal">
         <img src={CloseBtn} alt="Close Modal" onClick={hideModal} />
       </div>
+
+      <form className={`formulario ${animateModal ? "animar" : "cerrar"}`}>
+        <legend>Nuevo Gasto</legend>
+      </form>
     </div>
   );
 };
