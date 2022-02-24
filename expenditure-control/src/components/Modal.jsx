@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Text from "./Text";
 import CloseBtn from "../img/cerrar.svg";
 
@@ -7,11 +7,20 @@ const Modal = ({
   animateModal,
   setAnimateModal,
   saveExpenditure,
+  expenditureEdit
 }) => {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
+
+  useEffect( () => {
+    if (Object.keys(expenditureEdit).length > 0) {
+      setName(expenditureEdit.name)
+      setAmount(expenditureEdit.amount)
+      setCategory(expenditureEdit.category)
+    }
+  },[])
 
   const hideModal = () => {
     setAnimateModal(false);

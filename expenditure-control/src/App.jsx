@@ -18,12 +18,17 @@ function App() {
 
   useEffect(() => {
     if (Object.keys(expenditureEdit).length > 0) {
-      handleNewExpenditure();
+      setModal(true);
+
+      setTimeout(() => {
+        setAnimateModal(true);
+      }, 500);
     }
   }, [expenditureEdit]);
 
   const handleNewExpenditure = () => {
     setModal(true);
+    setExpenditureEdit({});
 
     setTimeout(() => {
       setAnimateModal(true);
