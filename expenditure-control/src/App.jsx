@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 import ExpensesList from "./components/ExpensesList";
@@ -14,6 +14,13 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
 
+  const [expenditureEdit, setExpenditureEdit] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(expenditureEdit).length > 0) {
+      handleNewExpenditure();
+    }
+  }, [expenditureEdit]);
 
   const handleNewExpenditure = () => {
     setModal(true);
@@ -35,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className={modal ? "fijar" : ''}>
+    <div className={modal ? "fijar" : ""}>
       <Header
         expenses={expenses}
         budget={budget}
@@ -47,7 +54,10 @@ function App() {
       {isValidBudget && (
         <>
           <main>
-            <ExpensesList expenses={expenses} />
+            <ExpensesList
+              expenses={expenses}
+              setExpenditureEdit={setExpenditureEdit}
+            />
           </main>
           <div className="nuevo-gasto">
             <img
@@ -65,6 +75,7 @@ function App() {
           animateModal={animateModal}
           setAnimateModal={setAnimateModal}
           saveExpenditure={saveExpenditure}
+          expenditureEdit={expenditureEdit}
         />
       )}
     </div>

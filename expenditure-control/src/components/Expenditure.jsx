@@ -26,12 +26,12 @@ const icons = {
   suscripciones: subscriptionIcon,
 };
 
-const Expenditure = ({ expenditure }) => {
+const Expenditure = ({ expenditure, setExpenditureEdit}) => {
   const { category, name, amount, id, date } = expenditure;
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log("editar...")}>Editar</SwipeAction>
+      <SwipeAction onClick={() => setExpenditureEdit(expenditure)}>Editar</SwipeAction>
     </LeadingActions>
   );
 
