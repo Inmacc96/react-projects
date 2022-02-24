@@ -26,20 +26,27 @@ const icons = {
   suscripciones: subscriptionIcon,
 };
 
-const Expenditure = ({ expenditure, setExpenditureEdit}) => {
+const Expenditure = ({
+  expenditure,
+  setExpenditureEdit,
+  deleteExpenditure,
+}) => {
   const { category, name, amount, id, date } = expenditure;
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => setExpenditureEdit(expenditure)}>Editar</SwipeAction>
+      <SwipeAction onClick={() => setExpenditureEdit(expenditure)}>
+        Editar
+      </SwipeAction>
     </LeadingActions>
   );
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log("Eliminar..")}>
-        Eliminar
-      </SwipeAction>
+      <SwipeAction 
+      onClick={() => deleteExpenditure(id)}
+      destructive={true}
+      >Eliminar</SwipeAction>
     </TrailingActions>
   );
 
