@@ -36,9 +36,18 @@ function App() {
   };
 
   const saveExpenditure = (expenditure) => {
-    expenditure.id = generateId();
-    expenditure.date = Date.now();
-    setExpenses([...expenses, expenditure]);
+    if (expenditure.id) {
+      // Update
+      const updatedExpenses = expenses.map((expenditureState) =>
+        expenditureState.id == expenditure.id ? expenditure : expenditureState
+      );
+      setExpenses(updatedExpenses);
+    } else {
+      // New expenditure
+      expenditure.id = generateId();
+      expenditure.date = Date.now();
+      setExpenses([...expenses, expenditure]);
+    }
 
     setAnimateModal(false);
     setTimeout(() => {
