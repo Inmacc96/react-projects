@@ -18,17 +18,12 @@ function App() {
 
   useEffect(() => {
     if (Object.keys(expenditureEdit).length > 0) {
-      setModal(true);
-
-      setTimeout(() => {
-        setAnimateModal(true);
-      }, 500);
+      handleNewExpenditure();
     }
   }, [expenditureEdit]);
 
   const handleNewExpenditure = () => {
     setModal(true);
-    setExpenditureEdit({});
 
     setTimeout(() => {
       setAnimateModal(true);
@@ -42,6 +37,7 @@ function App() {
         expenditureState.id == expenditure.id ? expenditure : expenditureState
       );
       setExpenses(updatedExpenses);
+      setExpenditureEdit({});
     } else {
       // New expenditure
       expenditure.id = generateId();
@@ -98,6 +94,7 @@ function App() {
           setAnimateModal={setAnimateModal}
           saveExpenditure={saveExpenditure}
           expenditureEdit={expenditureEdit}
+          setExpenditureEdit={setExpenditureEdit}
         />
       )}
     </div>

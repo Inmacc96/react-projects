@@ -8,26 +8,28 @@ const Modal = ({
   setAnimateModal,
   saveExpenditure,
   expenditureEdit,
+  setExpenditureEdit,
 }) => {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
-  const [id, setId] = useState('');
-  const [date, setDate] = useState('');
+  const [id, setId] = useState("");
+  const [date, setDate] = useState("");
 
   useEffect(() => {
     if (Object.keys(expenditureEdit).length > 0) {
       setName(expenditureEdit.name);
       setAmount(expenditureEdit.amount);
       setCategory(expenditureEdit.category);
-      setId(expenditureEdit.id)
-      setDate(expenditureEdit.date)
+      setId(expenditureEdit.id);
+      setDate(expenditureEdit.date);
     }
   }, []);
 
   const hideModal = () => {
     setAnimateModal(false);
+    setExpenditureEdit({});
     setTimeout(() => {
       setModal(false);
     }, 500);
