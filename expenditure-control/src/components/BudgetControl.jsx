@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const BudgetControl = ({ expenses, budget }) => {
   const [available, setAvailable] = useState(0);
@@ -25,7 +27,7 @@ const BudgetControl = ({ expenses, budget }) => {
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
-        <p>Gráfica aquí</p>
+        <CircularProgressbar value={50} />
       </div>
 
       <div className="contenido-presupuesto">
