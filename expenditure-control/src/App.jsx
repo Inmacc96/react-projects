@@ -6,7 +6,9 @@ import { generateId } from "./helpers";
 import IconNewExpenditure from "./img/nuevo-gasto.svg";
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(
+    JSON.parse(localStorage.getItem("expenses")) ?? []
+  );
 
   const [budget, setBudget] = useState(
     Number(localStorage.getItem("budget")) ?? 0
@@ -18,6 +20,8 @@ function App() {
 
   const [expenditureEdit, setExpenditureEdit] = useState({});
 
+  console.log(localStorage.getItem("expenses"));
+
   useEffect(() => {
     if (Object.keys(expenditureEdit).length > 0) {
       handleNewExpenditure();
@@ -27,6 +31,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("budget", budget);
   }, [budget]);
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
 
   useEffect(() => {
     const budgetLS = Number(localStorage.getItem("budget") ?? 0);
