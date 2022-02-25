@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 import ExpensesList from "./components/ExpensesList";
+import Filters from "./components/Filters";
 import { generateId } from "./helpers";
 import IconNewExpenditure from "./img/nuevo-gasto.svg";
 
@@ -20,6 +21,8 @@ function App() {
 
   const [expenditureEdit, setExpenditureEdit] = useState({});
 
+  const [filter, setFilter] = useState("");
+
   console.log(localStorage.getItem("expenses"));
 
   useEffect(() => {
@@ -35,6 +38,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
+
+  useEffect(() => {
+    if(filter){
+      // Filter expenses by category
+    }
+  }, [filter])
 
   useEffect(() => {
     const budgetLS = Number(localStorage.getItem("budget") ?? 0);
@@ -93,6 +102,7 @@ function App() {
       {isValidBudget && (
         <>
           <main>
+            <Filters filter={filter} setFilter={setFilter} />
             <ExpensesList
               expenses={expenses}
               setExpenditureEdit={setExpenditureEdit}
