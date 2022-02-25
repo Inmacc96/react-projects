@@ -18,7 +18,7 @@ import subscriptionIcon from "../img/icono_suscripciones.svg";
 
 const icons = {
   ahorro: savingIcon,
-  house: houseIcon,
+  casa: houseIcon,
   comida: foodIcon,
   gastos: miscellaneousExpensesIcon,
   ocio: leisureIcon,
@@ -43,10 +43,9 @@ const Expenditure = ({
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction 
-      onClick={() => deleteExpenditure(id)}
-      destructive={true}
-      >Eliminar</SwipeAction>
+      <SwipeAction onClick={() => deleteExpenditure(id)} destructive={true}>
+        Eliminar
+      </SwipeAction>
     </TrailingActions>
   );
 
