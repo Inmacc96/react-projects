@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import useSelectCurrencies from "../Hooks/useSelectCurrencies";
 
 const SubmitInput = styled.input`
   background-color: #9497ff;
@@ -19,6 +20,11 @@ const SubmitInput = styled.input`
 `;
 
 const Form = () => {
+
+    const [selectCurrencies] = useSelectCurrencies();
+
+    selectCurrencies();
+
   return (
     <form>
       <SubmitInput type="submit" value="Cotizar" />
