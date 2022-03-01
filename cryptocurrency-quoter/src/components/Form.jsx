@@ -29,6 +29,11 @@ const Form = () => {
     currencies
   ); // No tiene por qué llamarse igual a lo que devuelve useSelectCurrency
 
+  const [cryptocurrency, SelectCryptoCurrency] = useSelectCurrency(
+      "Elige tu Criptomoneda",
+      cryptos
+  )
+
   useEffect(() => {
     const consultAPI = async () => {
       const url =
@@ -53,6 +58,7 @@ const Form = () => {
   return (
     <form>
       <SelectCurrency />
+      <SelectCryptoCurrency />
 
       <SubmitInput type="submit" value="Cotizar" />
     </form>
