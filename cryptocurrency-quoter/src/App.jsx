@@ -42,13 +42,22 @@ const Heading = styled.h1`
 `;
 
 function App() {
-const [currencies, setCurrencies] = useState({});
+  const [currencies, setCurrencies] = useState({});
+  const [quotation, setQuotation] = useState({});
 
-useEffect(() => {
-  if(Object.keys(currencies).length > 0){
-    console.log(currencies)
-  }
-}, [currencies])
+  useEffect(() => {
+    if (Object.keys(currencies).length > 0) {
+      const quoteCrypto = async () => {
+        const {currency, cryptocurrency} = currencies;
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${cryptocurrency}&tsyms=${currency}`;
+        const response = await fetch(url);
+        const result = await response.json();
+
+        setQuotation(result.DISPLAY[cryptocurrency][currency])
+      };
+      quoteCrypto();
+    }
+  }, [currencies]);
 
   return (
     <Container>
@@ -57,7 +66,7 @@ useEffect(() => {
       <div>
         <Heading>Cotiza Criptomonedas al Instante</Heading>
 
-        <Form setCurrencies={setCurrencies}/>
+        <Form setCurrencies={setCurrencies} />
       </div>
     </Container>
   );
