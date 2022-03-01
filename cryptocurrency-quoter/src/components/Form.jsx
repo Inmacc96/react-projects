@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect} from "react";
 import styled from "@emotion/styled";
 import useSelectCurrency from "../Hooks/useSelectCurrency";
 import { currencies } from "../data/currencies";
@@ -26,6 +26,18 @@ const Form = () => {
     "Elige tu Moneda",
     currencies
   ); // No tiene por qué llamarse igual a lo que devuelve useSelectCurrency
+
+  useEffect(()=> {
+    const consultAPI = async () => {
+        const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+        const response = await fetch(url)
+        const result = await response.json()
+
+        console.log(result.Data)
+
+    }
+    consultAPI();
+  },[]) //Cuando el componente esté listo, va a llamar a nuestr API
 
   return (
     <form>
