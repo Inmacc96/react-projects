@@ -1,19 +1,27 @@
-import React from 'react'
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
 const Label = styled.label`
-    color: #fff;
-`
+  color: #fff;
+`;
 
-const useSelectCurrency = (label) => {
- 
-    const SelectCurrency = () => (
-        <>
-            <Label>{label}</Label>
-        </>
-    )
+const useSelectCurrency = (label, options) => {
+  const SelectCurrency = () => (
+    <>
+      <Label>{label}</Label>
+      <select>
+        <option value="">Seleccione</option>
 
-    return [SelectCurrency]
-}
+        {options.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    </>
+  );
 
-export default useSelectCurrency
+  return [SelectCurrency];
+};
+
+export default useSelectCurrency;
