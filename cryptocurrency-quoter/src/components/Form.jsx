@@ -8,6 +8,7 @@ const SubmitInput = styled.input`
   border: none;
   width: 100%;
   padding: 10px;
+  margin-top: 30px;
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
