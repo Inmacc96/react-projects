@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import Error from "./Error";
 import useSelectCurrency from "../Hooks/useSelectCurrency";
 import { currencies } from "../data/currencies";
 
@@ -23,6 +24,7 @@ const SubmitInput = styled.input`
 
 const Form = () => {
   const [cryptos, setCryptos] = useState([]);
+  const [error, setError] = useState(false);
 
   const [currency, SelectCurrency] = useSelectCurrency(
     "Elige tu Moneda",
@@ -30,9 +32,9 @@ const Form = () => {
   ); // No tiene por qué llamarse igual a lo que devuelve useSelectCurrency
 
   const [cryptocurrency, SelectCryptoCurrency] = useSelectCurrency(
-      "Elige tu Criptomoneda",
-      cryptos
-  )
+    "Elige tu Criptomoneda",
+    cryptos
+  );
 
   useEffect(() => {
     const consultAPI = async () => {
@@ -55,13 +57,27 @@ const Form = () => {
     consultAPI();
   }, []); //Cuando el componente esté listo, va a llamar a nuestr API
 
-  return (
-    <form>
-      <SelectCurrency />
-      <SelectCryptoCurrency />
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-      <SubmitInput type="submit" value="Cotizar" />
-    </form>
+    if ([currency, cryptocurrency].includes("")) {
+      setError(true);
+      return;
+    }
+    
+    setError(false);
+  };
+
+  return (
+    <>
+      {error && <Error>{'Todos los campos son obligatorios'}</Error>}
+      <form onSubmit={handleSubmit}>
+        <SelectCurrency />
+        <SelectCryptoCurrency />
+
+        <SubmitInput type="submit" value="Cotizar" />
+      </form>
+    </>
   );
 };
 
