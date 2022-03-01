@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import useSelectCurrency from "../Hooks/useSelectCurrency";
 import { currencies } from "../data/currencies";
@@ -22,22 +22,33 @@ const SubmitInput = styled.input`
 `;
 
 const Form = () => {
+  const [cryptos, setCryptos] = useState([]);
+
   const [currency, SelectCurrency] = useSelectCurrency(
     "Elige tu Moneda",
     currencies
   ); // No tiene por qué llamarse igual a lo que devuelve useSelectCurrency
 
-  useEffect(()=> {
+  useEffect(() => {
     const consultAPI = async () => {
-        const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
-        const response = await fetch(url)
-        const result = await response.json()
+      const url =
+        "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
+      const response = await fetch(url);
+      const result = await response.json();
 
-        console.log(result.Data)
+      const cryptosArray = result.Data.map((crypto) => {
+        const cryptos = {
+          id: crypto.CoinInfo.Name,
+          name: crypto.CoinInfo.FullName,
+        };
 
-    }
+        return cryptos;
+      });
+
+      setCryptos(cryptosArray);
+    };
     consultAPI();
-  },[]) //Cuando el componente esté listo, va a llamar a nuestr API
+  }, []); //Cuando el componente esté listo, va a llamar a nuestr API
 
   return (
     <form>
