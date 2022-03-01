@@ -22,7 +22,10 @@ const SubmitInput = styled.input`
 `;
 
 const Form = () => {
-  const [SelectCurrency] = useSelectCurrency("Elige tu Moneda", currencies);
+  const [currency, SelectCurrency] = useSelectCurrency(
+    "Elige tu Moneda",
+    currencies
+  ); // No tiene por qué llamarse igual a lo que devuelve useSelectCurrency
 
   return (
     <form>
