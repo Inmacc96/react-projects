@@ -22,7 +22,7 @@ const SubmitInput = styled.input`
   }
 `;
 
-const Form = () => {
+const Form = ({ setCurrencies }) => {
   const [cryptos, setCryptos] = useState([]);
   const [error, setError] = useState(false);
 
@@ -51,7 +51,6 @@ const Form = () => {
 
         return cryptos;
       });
-
       setCryptos(cryptosArray);
     };
     consultAPI();
@@ -64,13 +63,14 @@ const Form = () => {
       setError(true);
       return;
     }
-    
+
     setError(false);
+    setCurrencies({ currency, cryptocurrency });
   };
 
   return (
     <>
-      {error && <Error>{'Todos los campos son obligatorios'}</Error>}
+      {error && <Error>{"Todos los campos son obligatorios"}</Error>}
       <form onSubmit={handleSubmit}>
         <SelectCurrency />
         <SelectCryptoCurrency />
