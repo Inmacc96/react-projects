@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Form from "./components/Form";
 import CryptoImage from "./img/imagen-criptos.png";
 
 const Container = styled.div`
@@ -28,7 +29,8 @@ const Heading = styled.h1`
   margin-bottom: 50px;
   font-size: 34px;
 
-  &::after { //Añade un elemento justo despues del h1
+  &::after {
+    //Añade un elemento justo despues del h1
     content: "";
     width: 100px;
     height: 6px;
@@ -45,6 +47,8 @@ function App() {
 
       <div>
         <Heading>Cotiza Criptomonedas al Instante</Heading>
+        
+        <Form />
       </div>
     </Container>
   );
