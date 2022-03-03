@@ -7,8 +7,16 @@ const CustomerForm = () => {
   const newCustomerSchema = Yup.object().shape({
     customerName: Yup.string()
       .min(3, "El Nombre es muy corto")
-      .max(20, "El Nombre es muy largo")
-      .required("El Nombre del Cliente es Obligatorio"),
+      .max(40, "El Nombre es muy largo")
+      .required("El nombre del cliente es obligatorio"),
+    company: Yup.string().required("El nombre de la empresa es obligatorio"),
+    email: Yup.string()
+      .email("Email no válido")
+      .required("El email es obligatorio"),
+    phone: Yup.number()
+      .positive("El número no válido")
+      .integer("El número no válido")
+      .typeError("El número no es válido")
   });
 
   const handleSubmit = (values) => {
@@ -65,6 +73,9 @@ const CustomerForm = () => {
                   placeholder="Empresa del Cliente"
                   name="company"
                 />
+                {errors.company && touched.company ? (
+                  <Alert>{errors.company}</Alert>
+                ) : null}
               </div>
 
               <div className="mb-4">
@@ -78,6 +89,9 @@ const CustomerForm = () => {
                   placeholder="Email del Cliente"
                   name="email"
                 />
+                {errors.email && touched.email ? (
+                  <Alert>{errors.email}</Alert>
+                ) : null}
               </div>
 
               <div className="mb-4">
@@ -91,6 +105,9 @@ const CustomerForm = () => {
                   placeholder="Teléfono del Cliente"
                   name="phone"
                 />
+                {errors.phone && touched.phone ? (
+                  <Alert>{errors.phone}</Alert>
+                ) : null}
               </div>
 
               <div className="mb-4">
