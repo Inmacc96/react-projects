@@ -1,3 +1,20 @@
 {
-  "customers": []
+  "customers": [
+    {
+      "customerName": "MªInmaculada Caballero Carrero",
+      "company": "hola",
+      "email": "inmacaballerocarrero@gmail.com",
+      "phone": "692820950",
+      "notes": "hola",
+      "id": 1
+    },
+    {
+      "customerName": "Carla",
+      "company": "hola",
+      "email": "correro@correo.com",
+      "phone": "1232442323",
+      "notes": "hola",
+      "id": 2
+    }
+  ]
 }

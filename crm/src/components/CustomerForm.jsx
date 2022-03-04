@@ -16,11 +16,26 @@ const CustomerForm = () => {
     phone: Yup.number()
       .positive("El número no válido")
       .integer("El número no válido")
-      .typeError("El número no es válido")
+      .typeError("El número no es válido"),
   });
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    try {
+      const url = "http://localhost:4000/customers";
+
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
