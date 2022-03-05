@@ -21,7 +21,9 @@ const SeeCustomer = () => {
     getCustomerAPI();
   }, []);
 
-  return (
+  return Object.keys(customer).length === 0 ? (
+    <p>No Hay Resultados</p>
+  ) : (
     <div>
       <h1 className="font-black text-4xl text-blue-900">
         Ver Cliente: {customerName}
