@@ -28,7 +28,7 @@ const EditCustomer = () => {
       <p className="mt-3">
         Utiliza este formulario para editar datos de un cliente
       </p>
-      <CustomerForm customer={customer}/>
+      <CustomerForm customer={customer} loading={loading}/>
     </>
   );
 };

@@ -3,8 +3,9 @@ import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Alert from "./Alert";
+import Spinner from "./Spinner";
 
-const CustomerForm = ({ customer }) => {
+const CustomerForm = ({ customer, loading }) => {
   const navigate = useNavigate();
 
   const newCustomerSchema = Yup.object().shape({
@@ -42,7 +43,9 @@ const CustomerForm = ({ customer }) => {
     }
   };
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className="bg-white  mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
       <h1 className="text-gray-600 font-bold text-xl uppercase text-center">
         {customer?.customerName ? "Editar Cliente" : "Agregar Cliente"}
@@ -163,6 +166,7 @@ const CustomerForm = ({ customer }) => {
 
 CustomerForm.defaultProps = {
   customer: {},
+  loading: false
 };
 
 export default CustomerForm;
