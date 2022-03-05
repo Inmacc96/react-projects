@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 const SeeCustomer = () => {
   const [customer, setCustomer] = useState({});
+  const [loading, setLoading] = useState(true);
   const { customerName, email, phone, company, notes } = customer;
 
   const { id } = useParams();
@@ -17,11 +19,14 @@ const SeeCustomer = () => {
       } catch (error) {
         console.log(error);
       }
+      setLoading(!loading);
     };
     getCustomerAPI();
   }, []);
 
-  return Object.keys(customer).length === 0 ? (
+  return loading ? (
+    <Spinner />
+  ) : Object.keys(customer).length === 0 ? (
     <p>No Hay Resultados</p>
   ) : (
     <div>
