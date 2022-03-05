@@ -1,4 +1,3 @@
-import React from 'react'
 import CustomerForm from '../components/CustomerForm'
 
 const NewCustomer = () => {
