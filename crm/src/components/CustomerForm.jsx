@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Alert from "./Alert";
 
-const CustomerForm = ({customer}) => {
+const CustomerForm = ({ customer }) => {
   const navigate = useNavigate();
 
   const newCustomerSchema = Yup.object().shape({
@@ -45,16 +45,16 @@ const CustomerForm = ({customer}) => {
   return (
     <div className="bg-white  mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
       <h1 className="text-gray-600 font-bold text-xl uppercase text-center">
-        Agregar Cliente
+        {customer?.customerName ? "Editar Cliente" : "Agregar Cliente"}
       </h1>
 
       <Formik
         initialValues={{
-          customerName: customer?.customerName ?? '',
-          company: customer?.company ?? '',
-          email: customer?.email ?? '',
-          phone: customer?.phone ?? '',
-          notes: customer?.notes ?? '',
+          customerName: customer?.customerName ?? "",
+          company: customer?.company ?? "",
+          email: customer?.email ?? "",
+          phone: customer?.phone ?? "",
+          notes: customer?.notes ?? "",
         }}
         enableReinitialize={true}
         onSubmit={async (values, { resetForm }) => {
@@ -148,7 +148,9 @@ const CustomerForm = ({customer}) => {
 
               <input
                 type="submit"
-                value="Agregar Cliente"
+                value={
+                  customer?.customerName ? "Editar Cliente" : "Agregar Cliente"
+                }
                 className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg "
               />
             </Form>
@@ -160,7 +162,7 @@ const CustomerForm = ({customer}) => {
 };
 
 CustomerForm.defaultProps = {
-  customer: {}
-}
+  customer: {},
+};
 
 export default CustomerForm;
