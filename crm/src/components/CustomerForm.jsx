@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Alert from "./Alert";
 
-const CustomerForm = () => {
+const CustomerForm = ({customer}) => {
   const navigate = useNavigate();
 
   const newCustomerSchema = Yup.object().shape({
@@ -50,12 +50,13 @@ const CustomerForm = () => {
 
       <Formik
         initialValues={{
-          customerName: "",
-          company: "",
-          email: "",
-          phone: "",
-          notes: "",
+          customerName: customer?.customerName ?? '',
+          company: customer?.company ?? '',
+          email: customer?.email ?? '',
+          phone: customer?.phone ?? '',
+          notes: customer?.notes ?? '',
         }}
+        enableReinitialize={true}
         onSubmit={async (values, { resetForm }) => {
           await handleSubmit(values);
 
@@ -157,5 +158,9 @@ const CustomerForm = () => {
     </div>
   );
 };
+
+CustomerForm.defaultProps = {
+  customer: {}
+}
 
 export default CustomerForm;
