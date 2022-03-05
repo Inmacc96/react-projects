@@ -1,14 +1,6 @@
 {
   "customers": [
     {
-      "customerName": "MªInmaculada Caballero Carrero",
-      "company": "hola",
-      "email": "inmacaballerocarrero@gmail.com",
-      "phone": "692820950",
-      "notes": "hola",
-      "id": 1
-    },
-    {
       "customerName": "Carla",
       "company": "hola",
       "email": "correro@correo.com",
@@ -17,7 +9,7 @@
       "id": 2
     },
     {
-      "customerName": "Carla",
+      "customerName": "Pablo",
       "company": "hola",
       "email": "correro@correo.com",
       "phone": "1232442323",
@@ -39,6 +31,22 @@
       "phone": "692820950",
       "notes": "dww",
       "id": 5
+    },
+    {
+      "customerName": "juan",
+      "company": "codigo con juan",
+      "email": "juan@juan.com",
+      "phone": "121323123",
+      "notes": "",
+      "id": 6
+    },
+    {
+      "customerName": "pepe",
+      "company": "hola",
+      "email": "inmacaballerocarrero@gmail.com",
+      "phone": "692820950",
+      "notes": "",
+      "id": 7
     }
   ]
 }
