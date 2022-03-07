@@ -1,36 +1,12 @@
 {
   "customers": [
     {
-      "customerName": "Carla",
-      "company": "hola",
+      "customerName": "Carla ACTUALIZADO",
+      "company": "Ayesa",
       "email": "correro@correo.com",
       "phone": "1232442323",
       "notes": "hola",
       "id": 2
-    },
-    {
-      "customerName": "Pablo",
-      "company": "hola",
-      "email": "correro@correo.com",
-      "phone": "1232442323",
-      "notes": "hola",
-      "id": 3
-    },
-    {
-      "customerName": "pepe",
-      "company": "hola",
-      "email": "correo@correo.com",
-      "phone": "1221312",
-      "notes": "21e12e12",
-      "id": 4
-    },
-    {
-      "customerName": "MªInmaculada Caballero Carrero",
-      "company": "dsd",
-      "email": "inmacaballerocarrero@gmail.com",
-      "phone": "692820950",
-      "notes": "dww",
-      "id": 5
     },
     {
       "customerName": "juan",
@@ -39,14 +15,6 @@
       "phone": "121323123",
       "notes": "",
       "id": 6
-    },
-    {
-      "customerName": "pepe",
-      "company": "hola",
-      "email": "inmacaballerocarrero@gmail.com",
-      "phone": "692820950",
-      "notes": "",
-      "id": 7
     }
   ]
 }
