@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     const getCustomersAPI = async () => {
       try {
-        const url = "http://localhost:4000/customers";
+        const url = import.meta.env.VITE_API_URL;
 
         const response = await fetch(url);
 
@@ -30,7 +30,7 @@ const Home = () => {
     if (isDeleteCustomer) {
       try {
         // Delete it with API request.
-        const url = `http://localhost:4000/customers/${id}`;
+        const url = `${import.meta.env.VITE_API_URL}/${id}`;
         const response = await fetch(url, {
           method: "DELETE",
         });

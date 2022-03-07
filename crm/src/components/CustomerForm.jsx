@@ -25,10 +25,10 @@ const CustomerForm = ({ customer, loading }) => {
 
   const handleSubmit = async (values) => {
     try {
-      let response
+      let response;
       if (customer.id) {
         // Edir record
-        const url = `http://localhost:4000/customers/${customer.id}`;
+        const url = `${import.meta.env.VITE_API_URL}/${customer.id}`;
         response = await fetch(url, {
           method: "PUT",
           body: JSON.stringify(values),
@@ -38,7 +38,7 @@ const CustomerForm = ({ customer, loading }) => {
         });
       } else {
         // New record
-        const url = "http://localhost:4000/customers";
+        const url = import.meta.env.VITE_API_URL;
         response = await fetch(url, {
           method: "POST",
           body: JSON.stringify(values),
