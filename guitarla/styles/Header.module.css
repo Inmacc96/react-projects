@@ -1,11 +1,50 @@
 .header {
   background-image: linear-gradient(
-    to right,
-    rgb(0 0 0 / .8),
-    rgb(0 0 0 / .7)),
-    url('../public/img/header.jpg')
-  ;
+      to right,
+      rgb(0 0 0 / 0.8),
+      rgb(0 0 0 / 0.7)
+    ),
+    url("../public/img/header.jpg");
   background-size: cover;
   background-position: 50%;
   padding: 5rem 0;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width:768px) { /* Para tablets o pantallas más grandes */
+    .headerContent{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+.nav {
+  margin-top: 5rem;
+  display: flex;
+  gap: 2rem
+}
+@media (min-width:768px) { /* Para tablets o pantallas más grandes */
+    .nav{
+        margin-top: 0;
+    }
+}
+
+.nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: .5rem;
+  transition-property: background-color;
+  transition-duration: .3s;
+}
+
+.nav a:hover{
+    background-color: var(--primary);
 }
