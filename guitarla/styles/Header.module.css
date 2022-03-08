@@ -1,0 +1,11 @@
+.header {
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / .8),
+    rgb(0 0 0 / .7)),
+    url('../public/img/header.jpg')
+  ;
+  background-size: cover;
+  background-position: 50%;
+  padding: 5rem 0;
+}
