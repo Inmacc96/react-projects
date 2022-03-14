@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import BlogPost from "../components/BlogPost";
-import styles from '../styles/Blog.module.css'
+import styles from "../styles/Blog.module.css";
 
 const Blog = ({ blogposts }) => {
   return (
@@ -19,7 +19,7 @@ const Blog = ({ blogposts }) => {
 };
 
 export async function getServerSideProps() {
-  const url = "http://localhost:1337/blogs";
+  const url = `${process.env.API_URL}/blogs`;
   const response = await fetch(url);
   const blogposts = await response.json();
   return {
