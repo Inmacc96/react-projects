@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import { formatDate } from "../../helpers";
+import styles from '../../styles/BlogPost.module.css'
 
 const BlogPost = ({ blogpost }) => {
   const { Content, image, published_at, title } = blogpost;
-  console.log(blogpost);
   return (
     <Layout page={`${title}`}>
       <main className="contenedor">
         <h1 className="heading">{title}</h1>
-        <article>
+        <article className={styles.blogpost}>
           <Image
             layout="responsive"
             width={800}
@@ -18,9 +18,9 @@ const BlogPost = ({ blogpost }) => {
             alt={`Entrada ${title}`}
           />
 
-          <div>
-            <p>{formatDate(published_at)}</p>
-            <p>{Content}</p>
+          <div className={styles.container}>
+            <p className={styles.date}>{formatDate(published_at)}</p>
+            <p className={styles.text}>{Content}</p>
           </div>
         </article>
       </main>

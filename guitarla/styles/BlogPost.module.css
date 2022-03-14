@@ -1,3 +1,8 @@
+.blogpost {
+  max-width: 80rem;
+  margin: 0px auto;
+}
+
 .container {
   padding: 2rem;
 }
@@ -39,4 +44,8 @@
 .link:hover {
   background-color: var(--primary);
   color: var(--blanco);
+}
+
+.text {
+  white-space: pre-wrap;
 }
