@@ -1,10 +1,18 @@
 import Layout from "../components/Layout";
+import BlogPost from "../components/BlogPost";
 
-const Blog = ({result}) => {
-  console.log(result)
+const Blog = ({ blogposts }) => {
   return (
     <Layout page="Blog">
-      <h1>Desde Blog</h1>
+      <main className="contenedor">
+        <h2 className="heading">Blog</h2>
+
+        <div>
+          {blogposts.map((blogpost) => (
+            <BlogPost key={blogpost.id} blogpost={blogpost} />
+          ))}
+        </div>
+      </main>
     </Layout>
   );
 };
@@ -12,10 +20,10 @@ const Blog = ({result}) => {
 export async function getServerSideProps() {
   const url = "http://localhost:1337/blogs";
   const response = await fetch(url);
-  const result = await response.json();
+  const blogposts = await response.json();
   return {
     props: {
-      result
+      blogposts,
     },
   };
 }
