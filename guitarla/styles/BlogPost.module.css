@@ -1,0 +1,42 @@
+.container {
+  padding: 2rem;
+}
+
+.container h3 {
+  font-weight: 400;
+  font-size: 2.8rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.date {
+  font-size: 1.6rem;
+  color: var(--primary);
+}
+
+.summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.link {
+  margin-top: 2rem;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--negro);
+  border: 2px solid var(--primary);
+  padding: 1rem 5rem;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.link:hover {
+  background-color: var(--primary);
+  color: var(--blanco);
+}
