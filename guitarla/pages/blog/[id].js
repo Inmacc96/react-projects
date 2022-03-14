@@ -1,8 +1,30 @@
+import Image from "next/image";
+import Layout from "../../components/Layout";
+import { formatDate } from "../../helpers";
+
 const BlogPost = ({ blogpost }) => {
+  const { Content, image, published_at, title } = blogpost;
+  console.log(blogpost);
   return (
-    <div>
-      <h1>Desde Entrada blog</h1>
-    </div>
+    <Layout page={`${title}`}>
+      <main className="contenedor">
+        <h1 className="heading">{title}</h1>
+        <article>
+          <Image
+            layout="responsive"
+            width={800}
+            height={600}
+            src={image.url}
+            alt={`Entrada ${title}`}
+          />
+
+          <div>
+            <p>{formatDate(published_at)}</p>
+            <p>{Content}</p>
+          </div>
+        </article>
+      </main>
+    </Layout>
   );
 };
 
