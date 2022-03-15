@@ -1,0 +1,18 @@
+.not_found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not_found h1 {
+  color: black;
+}
+
+.not_found a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 3rem;
+  margin: 0;
+}
