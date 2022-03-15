@@ -1,10 +1,13 @@
+import Guitar from "./Guitar";
 
-const List = ({guitars}) => {
+const List = ({ guitars }) => {
   return (
     <div>
-        <h1>Desde listado</h1>
+      {guitars.map((guitar) => (
+        <Guitar key={guitar.id} guitar={guitar} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;
