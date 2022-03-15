@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import { formatDate } from "../../helpers";
-import styles from '../../styles/BlogPost.module.css'
+import styles from "../../styles/BlogPost.module.css";
 
 const BlogPost = ({ blogpost }) => {
-  const { Content, image, published_at, title } = blogpost;
+  const { Content, image, published_at, title } = blogpost[0];
+  console.log(blogpost);
   return (
-    <Layout page={`${title}`}>
+    <Layout page={title}>
       <main className="contenedor">
         <h1 className="heading">{title}</h1>
         <article className={styles.blogpost}>
@@ -46,7 +47,7 @@ export async function getStaticPaths() {
   const blogposts = await response.json();
 
   const paths = blogposts.map((blogpost) => ({
-    params: { id: blogpost.id },
+    params: { url: blogpost.url },
   }));
 
   return {
@@ -57,11 +58,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { id } }) {
+export async function getStaticProps({ params: { url } }) {
   // Esta funcion es la que se va a traer la información y la va a colocar dentro de todos los enlaces
   // Identifica cada entrada
-  const url = `${process.env.API_URL}/blogs/${id}`;
-  const response = await fetch(url);
+  const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
+  const response = await fetch(urlBlog);
   const blogpost = await response.json();
   return {
     props: { blogpost },

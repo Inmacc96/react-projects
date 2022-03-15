@@ -4,7 +4,7 @@ import { formatDate } from "../helpers"; // Al llamarse el archivo index.js, sol
 import styles from "../styles/BlogPost.module.css";
 
 const BlogPost = ({ blogpost }) => {
-  const { title, summary, image, published_at, id } = blogpost;
+  const { title, summary, image, published_at, id, url } = blogpost;
   return (
     <article>
       <Image
@@ -18,7 +18,7 @@ const BlogPost = ({ blogpost }) => {
         <h3>{title}</h3>
         <p className={styles.date}>{formatDate(published_at)}</p>
         <p className={styles.summary}>{summary}</p>
-        <Link href={`/blog/${id}`}>
+        <Link href={`/blog/${url}`}>
             <a className={styles.link}>Leer Entrada</a>
         </Link>
       </div>
