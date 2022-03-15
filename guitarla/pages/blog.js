@@ -19,7 +19,7 @@ const Blog = ({ blogposts }) => {
 };
 
 export async function getServerSideProps() {
-  const url = `${process.env.API_URL}/blogs`;
+  const url = `${process.env.API_URL}/blogs/?_sort=createdAt:desc`;
   const response = await fetch(url);
   const blogposts = await response.json();
   return {
