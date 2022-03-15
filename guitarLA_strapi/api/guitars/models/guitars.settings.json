@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guitars",
+  "info": {
+    "name": "Guitars",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "price": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}
