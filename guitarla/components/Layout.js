@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Layout = ({ children, page }) => {
+const Layout = ({ children, page, guitar }) => {
   return (
     <div>
       <Head>
@@ -16,11 +16,15 @@ const Layout = ({ children, page }) => {
         />
       </Head>
 
-      <Header />
+      <Header guitar={guitar}/>
       {children}
       <Footer />
     </div>
   );
 };
+
+Layout.defaultProps = {
+  guitar: null
+}
 
 export default Layout;

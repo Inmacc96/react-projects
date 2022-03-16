@@ -5,7 +5,7 @@ import BlogList from "../components/BlogList";
 
 const Home = ({ guitars, course, blogposts }) => {
   return (
-    <Layout page="Inicio">
+    <Layout page="Inicio" guitar={guitars[3]}>
       <main className="contenedor">
         <List guitars={guitars} />
       </main>
