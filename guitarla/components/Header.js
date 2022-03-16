@@ -26,12 +26,12 @@ const Header = ({ guitar }) => {
           </nav>
         </div>
         {guitar && (
-          <div>
-            <h1>Modelo {guitar.name}</h1>
+          <div className={styles.model}>
+            <h2>Modelo {guitar.name}</h2>
             <p>{guitar.description}</p>
-            <p>${guitar.price}</p>
+            <p className={styles.price}>${guitar.price}</p>
             <Link href={`/guitars/${guitar.url}`}>
-              <a>Ver Producto</a>
+              <a className={styles.link}>Ver Producto</a>
             </Link>
           </div>
         )}
