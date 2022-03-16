@@ -1,15 +1,19 @@
 import Layout from "../components/Layout";
 import List from "../components/List";
 import Course from "../components/Course";
+import BlogList from "../components/BlogList";
 
-const Home = ({ guitars, course }) => {
+const Home = ({ guitars, course, blogposts }) => {
   return (
     <Layout page="Inicio">
       <main className="contenedor">
-        <h1 className="heading">Nuestra Colección</h1>
+      <h1 className="heading">Nuestra Colección</h1>
         <List guitars={guitars} />
       </main>
-      <Course course={course}/>
+      <Course course={course} />
+      <section className="contenedor">
+        <BlogList blogposts={blogposts} />
+      </section>
     </Layout>
   );
 };
@@ -17,21 +21,25 @@ const Home = ({ guitars, course }) => {
 export async function getServerSideProps() {
   const urlGuitars = `${process.env.API_URL}/guitars`;
   const urlCourse = `${process.env.API_URL}/course`;
+  const urlBlogPosts = `${process.env.API_URL}/blogs/?_limit=3&_sort=createdAt:desc`;
 
-  const [resGuitars, resCourse] = await Promise.all([
+  const [resGuitars, resCourse, resBlogPosts] = await Promise.all([
     fetch(urlGuitars),
     fetch(urlCourse),
+    fetch(urlBlogPosts),
   ]);
 
-  const [guitars, course] = await Promise.all([
+  const [guitars, course, blogposts] = await Promise.all([
     resGuitars.json(),
     resCourse.json(),
+    resBlogPosts.json(),
   ]);
 
   return {
     props: {
       guitars,
       course,
+      blogposts,
     },
   };
 }

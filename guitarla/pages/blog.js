@@ -1,18 +1,11 @@
 import Layout from "../components/Layout";
-import BlogPost from "../components/BlogPost";
-import styles from "../styles/Blog.module.css";
+import BlogList from "../components/BlogList";
 
 const Blog = ({ blogposts }) => {
   return (
     <Layout page="Blog">
       <main className="contenedor">
-        <h2 className="heading">Blog</h2>
-
-        <div className={styles.blog}>
-          {blogposts.map((blogpost) => (
-            <BlogPost key={blogpost.id} blogpost={blogpost} />
-          ))}
-        </div>
+        <BlogList blogposts={blogposts} />
       </main>
     </Layout>
   );
