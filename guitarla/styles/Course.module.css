@@ -1,0 +1,44 @@
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .content {
+    grid-column: 2/3;
+  }
+}
+
+.text {
+  color: var(--blanco);
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--blanco);
+  border: 2px solid var(--primary);
+  padding: 1rem 5rem;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.link:hover {
+  background-color: var(--primary);
+  color: var(--blanco);
+}

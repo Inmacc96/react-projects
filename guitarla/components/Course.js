@@ -1,12 +1,16 @@
+import styles from "../styles/Course.module.css";
+
 const Course = ({ course }) => {
   const { title, content, image } = course;
   return (
     <section>
-      <div className="contenedor">
-        <div>
-          <h2>{title}</h2>
-          <p>{content}</p>
-          <a href="#">Más Información</a>
+      <div className={`contenedor ${styles.grid}`}>
+        <div className={styles.content}>
+          <h2 className="heading">{title}</h2>
+          <p className={styles.text}>{content}</p>
+          <a className={styles.link} href="#">
+            Más Información
+          </a>
         </div>
       </div>
 
