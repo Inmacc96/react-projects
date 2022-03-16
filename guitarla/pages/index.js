@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import List from "../components/List";
 
-const Home = ({ guitars }) => {
+const Home = ({ guitars, courses }) => {
   return (
     <Layout page="Inicio">
       <main className="contenedor">
@@ -13,13 +13,23 @@ const Home = ({ guitars }) => {
 };
 
 export async function getServerSideProps() {
-  const url = `${process.env.API_URL}/guitars`;
-  const response = await fetch(url);
-  const guitars = await response.json();
+  const urlGuitars = `${process.env.API_URL}/guitars`;
+  const urlCourses = `${process.env.API_URL}/courses`;
+
+  const [resGuitars, resCourses] = await Promise.all([
+    fetch(urlGuitars),
+    fetch(urlCourses),
+  ]);
+
+  const [guitars, courses] = await Promise.all([
+    resGuitars.json(),
+    resCourses.json(),
+  ]);
 
   return {
     props: {
       guitars,
+      courses,
     },
   };
 }
