@@ -1,35 +1,37 @@
 import Layout from "../components/Layout";
 import List from "../components/List";
+import Course from "../components/Course";
 
-const Home = ({ guitars, courses }) => {
+const Home = ({ guitars, course }) => {
   return (
     <Layout page="Inicio">
       <main className="contenedor">
         <h1 className="heading">Nuestra Colección</h1>
         <List guitars={guitars} />
       </main>
+      <Course course={course}/>
     </Layout>
   );
 };
 
 export async function getServerSideProps() {
   const urlGuitars = `${process.env.API_URL}/guitars`;
-  const urlCourses = `${process.env.API_URL}/courses`;
+  const urlCourse = `${process.env.API_URL}/course`;
 
-  const [resGuitars, resCourses] = await Promise.all([
+  const [resGuitars, resCourse] = await Promise.all([
     fetch(urlGuitars),
-    fetch(urlCourses),
+    fetch(urlCourse),
   ]);
 
-  const [guitars, courses] = await Promise.all([
+  const [guitars, course] = await Promise.all([
     resGuitars.json(),
-    resCourses.json(),
+    resCourse.json(),
   ]);
 
   return {
     props: {
       guitars,
-      courses,
+      course,
     },
   };
 }
