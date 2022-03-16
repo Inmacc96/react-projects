@@ -7,7 +7,6 @@ const Home = ({ guitars, course, blogposts }) => {
   return (
     <Layout page="Inicio">
       <main className="contenedor">
-      <h1 className="heading">Nuestra Colección</h1>
         <List guitars={guitars} />
       </main>
       <Course course={course} />
