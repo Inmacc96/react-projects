@@ -2,24 +2,24 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/courses",
-      "handler": "courses.find",
+      "path": "/course",
+      "handler": "course.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/courses",
-      "handler": "courses.update",
+      "path": "/course",
+      "handler": "course.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/courses",
-      "handler": "courses.delete",
+      "path": "/course",
+      "handler": "course.delete",
       "config": {
         "policies": []
       }
