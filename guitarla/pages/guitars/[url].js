@@ -2,8 +2,15 @@ import Layout from "../../components/Layout";
 import Image from "next/image";
 import styles from "../../styles/Guitar.module.css";
 
-const Product = ({ guitar }) => {
+const Product = ({ guitar, addToCart }) => {
   const { name, image, description, price } = guitar[0];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //Add product to cart
+
+  };
   return (
     <Layout page={`Guitarra ${name}`}>
       <div className={styles.guitar}>
@@ -19,7 +26,7 @@ const Product = ({ guitar }) => {
           <p className={styles.description}>{description}</p>
           <p className={styles.price}>${price}</p>
 
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label>Cantidad:</label>
             <select>
               <option value="">-- Seleccione --</option>
