@@ -2,8 +2,7 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import styles from "../styles/Cart.module.css";
 
-const Cart = ({ cart }) => {
-  console.log(cart);
+const Cart = ({ cart, updateAmount }) => {
   return (
     <Layout page="Carrito de compras">
       <h1 className="heading">Carrito</h1>
@@ -25,7 +24,27 @@ const Cart = ({ cart }) => {
 
                   <div>
                     <p className={styles.name}>{product.name}</p>
-                    <p className={styles.amount}>Cantidad: {product.amount}</p>
+                    <div className={styles.amount}>
+                      <p>Cantidad:</p>
+                      <select
+                        value={product.amount}
+                        className={styles.select}
+                        onChange={(e) =>
+                          updateAmount({
+                            id: product.id,
+                            amount: e.target.value,
+                          })
+                        }
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                      </select>
+                    </div>
                     <p className={styles.price}>
                       $<span>{product.price}</span>
                     </p>

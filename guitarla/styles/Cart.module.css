@@ -35,19 +35,38 @@
   font-size: 2.2rem;
 }
 
+.amount {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.amount p {
+  margin: 0;
+}
+
+.select {
+  all: unset;
+  padding: 1rem;
+  border: 1px solid #cfcfcf;
+  flex: 1; /* Hace que tome todo el tamaño restante */
+  text-align: center;
+  border-radius: 1rem;
+}
 .price {
   font-weight: 700;
   color: var(--primary);
 }
 
-.price span{
+.price span {
   font-size: 2.4rem;
 }
 
-.subtotal{
+.subtotal {
   font-weight: 700;
 }
 
-.subtotal span{
+.subtotal span {
   font-size: 2.4rem;
 }

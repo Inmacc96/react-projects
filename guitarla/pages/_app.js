@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     const cartLS = JSON.parse(localStorage.getItem("cart")) ?? [];
     setCart(cartLS);
   }, []);
-  
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -27,7 +27,24 @@ function MyApp({ Component, pageProps }) {
       setCart([...cart, product]);
     }
   };
-  return <Component {...pageProps} cart={cart} addToCart={addToCart} />;
+
+  const updateAmount = (product) => {
+    const updateCart = cart.map((article) => {
+      if (article.id === product.id) {
+        article.amount = product.amount;
+      }
+      return article;
+    });
+    setCart(updateCart);
+  };
+  return (
+    <Component
+      {...pageProps}
+      cart={cart}
+      addToCart={addToCart}
+      updateAmount={updateAmount}
+    />
+  );
 }
 
 export default MyApp;
