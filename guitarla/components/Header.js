@@ -25,6 +25,17 @@ const Header = ({ guitar }) => {
             <Link href="/aboutus">Nosotros</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/store">Tienda</Link>
+            <Link href="/cart">
+              <a>
+                <Image
+                  layout="fixed"
+                  width={30}
+                  height={25}
+                  src={"/img/carrito.png"}
+                  alt="image cart"
+                />
+              </a>
+            </Link>
           </nav>
         </div>
         {guitar && (
@@ -41,7 +52,13 @@ const Header = ({ guitar }) => {
 
       {router.pathname == "/" && (
         <div className={styles.guitar}>
-          <Image layout="fixed" width={500} height={1200} src="/img/header_guitarra.png" alt="imagen header guitarra" />
+          <Image
+            layout="fixed"
+            width={500}
+            height={1200}
+            src="/img/header_guitarra.png"
+            alt="imagen header guitarra"
+          />
         </div>
       )}
     </header>
