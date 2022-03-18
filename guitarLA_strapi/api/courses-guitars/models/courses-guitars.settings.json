@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses_guitars",
+  "info": {
+    "name": "coursesGuitars",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "start_date": {
+      "required": true,
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/courses-guitars",
+      "handler": "courses-guitars.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/courses-guitars/count",
+      "handler": "courses-guitars.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/courses-guitars/:id",
+      "handler": "courses-guitars.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/courses-guitars",
+      "handler": "courses-guitars.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/courses-guitars/:id",
+      "handler": "courses-guitars.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/courses-guitars/:id",
+      "handler": "courses-guitars.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
