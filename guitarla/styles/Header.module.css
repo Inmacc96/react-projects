@@ -26,8 +26,10 @@
 
 .nav {
   margin-top: 5rem;
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
@@ -35,6 +37,7 @@
   /* Para tablets o pantallas más grandes */
   .nav {
     margin-top: 0;
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
