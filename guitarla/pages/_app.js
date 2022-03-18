@@ -37,12 +37,19 @@ function MyApp({ Component, pageProps }) {
     });
     setCart(updateCart);
   };
+
+  const deleteProduct = (id) => {
+    const updateCart = cart.filter((article) => article.id !== id);
+    setCart(updateCart);
+  };
+
   return (
     <Component
       {...pageProps}
       cart={cart}
       addToCart={addToCart}
       updateAmount={updateAmount}
+      deleteProduct={deleteProduct}
     />
   );
 }

@@ -20,6 +20,7 @@
   align-items: center;
   border-bottom: 1px solid #cfcfcf;
   padding: 3rem;
+  position: relative;
 }
 
 .product:last-of-type {
@@ -69,4 +70,16 @@
 
 .subtotal span {
   font-size: 2.4rem;
+}
+
+.delete{
+  all: unset;
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  font-weight: bold;
+}
+
+.delete:hover{
+  cursor: pointer;
 }

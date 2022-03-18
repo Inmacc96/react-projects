@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import styles from "../styles/Cart.module.css";
 
-const Cart = ({ cart, updateAmount }) => {
+const Cart = ({ cart, updateAmount, deleteProduct }) => {
   return (
     <Layout page="Carrito de compras">
       <h1 className="heading">Carrito</h1>
@@ -52,6 +52,14 @@ const Cart = ({ cart, updateAmount }) => {
                       Subtotal: $<span>{product.price * product.amount}</span>
                     </p>
                   </div>
+
+                  <button
+                    type="button"
+                    className={styles.delete}
+                    onClick={() => deleteProduct(product.id)}
+                  >
+                    X
+                  </button>
                 </div>
               ))}
         </div>
