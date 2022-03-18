@@ -1,13 +1,25 @@
 import Layout from "../components/Layout";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import styles from "../styles/Cart.module.css";
 
 const Cart = ({ cart, updateAmount, deleteProduct }) => {
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const totalValue = cart.reduce(
+      (total, product) => total + product.amount * product.price,
+      0
+    );
+    setTotal(totalValue);
+  }, [cart]);
+
   return (
     <Layout page="Carrito de compras">
       <h1 className="heading">Carrito</h1>
       <main className={`contenedor ${styles.content}`}>
         <div className={styles.cart}>
+          <h2>Artículos</h2>
           {cart.length === 0
             ? "Carrito Vacío"
             : cart.map((product) => (
@@ -63,7 +75,16 @@ const Cart = ({ cart, updateAmount, deleteProduct }) => {
                 </div>
               ))}
         </div>
-        <div>2</div>
+        <div className={styles.summary}>
+          {total > 0 ? (
+            <>
+              <h3>Resumen del Pedido</h3>
+              <p className={styles.price}>Total a pagar: ${total}</p>
+            </>
+          ) : (
+            <p>No hay productos en el carrito</p>
+          )}
+        </div>
       </main>
     </Layout>
   );

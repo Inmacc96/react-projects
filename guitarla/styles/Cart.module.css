@@ -6,6 +6,7 @@
 @media (min-width: 768px) {
   .content {
     grid-template-columns: 3fr 2fr;
+    align-items: start;
   }
 }
 
@@ -72,7 +73,7 @@
   font-size: 2.4rem;
 }
 
-.delete{
+.delete {
   all: unset;
   position: absolute;
   top: 3rem;
@@ -80,6 +81,12 @@
   font-weight: bold;
 }
 
-.delete:hover{
+.delete:hover {
   cursor: pointer;
+}
+
+.summary {
+  background-color: #f9fafb;
+  padding: 3rem;
+  border-radius: 1rem;
 }
