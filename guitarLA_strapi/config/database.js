@@ -4,12 +4,12 @@ module.exports = ({ env }) => ({
     default: {
       connector: "mongoose",
       settings: {
-        host: env("DATABASE_HOST", "cluster0.s1sf4.mongodb.net"),
+        host: env("DATABASE_HOST"),
         srv: env.bool("DATABASE_SRV", true),
         port: env.int("DATABASE_PORT"),
-        database: env("DATABASE_NAME", "guitarLA_strapi"),
-        username: env("DATABASE_USERNAME", "root"),
-        password: env("DATABASE_PASSWORD", "jY3L8H3OuIgmXm7j"),
+        database: env("DATABASE_NAME"),
+        username: env("DATABASE_USERNAME"),
+        password: env("DATABASE_PASSWORD"),
       },
       options: {
         authenticationDatabase: env("AUTHENTICATION_DATABASE", "admin"),
