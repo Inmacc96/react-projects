@@ -1,4 +1,5 @@
 import styles from "../styles/Course.module.css";
+import Link from "next/Link";
 
 const Course = ({ course }) => {
   const { title, content, image } = course;
@@ -8,9 +9,9 @@ const Course = ({ course }) => {
         <div className={styles.content}>
           <h2 className="heading">{title}</h2>
           <p className={styles.text}>{content}</p>
-          <a className={styles.link} href="/courses">
-            Más Información
-          </a>
+          <Link href="/courses">
+            <a className={styles.link}>Más Información</a>
+          </Link>
         </div>
       </div>
 
