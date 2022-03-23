@@ -1,6 +1,7 @@
 import Form from "./Form";
 
 const InsuranceApp = () => {
+
   return (
     <>
       <header className="my-10">

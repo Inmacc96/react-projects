@@ -1,15 +1,9 @@
-import { useState, createContext } from "react";
+import { createContext } from "react";
 
 const QuoterContext = createContext();
 
 const QuoterProvider = ({ children }) => {
-  const [modal, setModal] = useState(false);
-
-  const changeState = () => {
-      setModal(!modal)
-  }
-
-  return <QuoterContext.Provider value={{modal, changeState}}>{children}</QuoterContext.Provider>;
+  return <QuoterContext.Provider value={{}}>{children}</QuoterContext.Provider>;
 };
 
 export { QuoterProvider };
