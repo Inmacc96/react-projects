@@ -1,17 +1,15 @@
-import { createContext } from "react";
+import { useState, createContext } from "react";
 
 const QuoterContext = createContext();
 
 const QuoterProvider = ({ children }) => {
-  const hola = "Hola Mundo";
+  const [modal, setModal] = useState(false);
 
-  const fnHolaMundo = () => {
-      console.log('Hola Mundo desde una función')
+  const changeState = () => {
+      setModal(!modal)
   }
 
-  return (
-    <QuoterContext.Provider value={{ hola, fnHolaMundo }}>{children}</QuoterContext.Provider>
-  );
+  return <QuoterContext.Provider value={{modal, changeState}}>{children}</QuoterContext.Provider>;
 };
 
 export { QuoterProvider };
