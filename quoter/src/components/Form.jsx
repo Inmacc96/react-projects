@@ -1,7 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { brands, years, plans } from "../constants";
+import QuoterContext from "../context/QuoterProvider";
 
 const Form = () => {
+
+    const { hola, fnHolaMundo } = useContext(QuoterContext);
+   fnHolaMundo()
   return (
     <>
       <form>

@@ -1,7 +1,10 @@
+import { QuoterProvider } from "./context/QuoterProvider";
 import InsuranceApp from "./components/InsuranceApp";
 
 function App() {
-  return <InsuranceApp />;
+  return <QuoterProvider>
+    <InsuranceApp />
+  </QuoterProvider>
 }
 
 export default App;
