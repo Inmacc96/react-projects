@@ -1,6 +1,9 @@
 import Form from "./Form";
+import useQuoter from "../hooks/useQuoter";
 
 const InsuranceApp = () => {
+
+  const {result} = useQuoter();
 
   return (
     <>
@@ -12,6 +15,8 @@ const InsuranceApp = () => {
 
       <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow rounded-lg p-10">
         <Form />
+
+        {result}
       </main>
     </>
   );

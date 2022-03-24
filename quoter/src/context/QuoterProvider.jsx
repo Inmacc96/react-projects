@@ -52,7 +52,14 @@ const QuoterProvider = ({ children }) => {
 
   return (
     <QuoterContext.Provider
-      value={{ data, handleChangeData, error, setError, insuranceQuote }}
+      value={{
+        data,
+        handleChangeData,
+        error,
+        setError,
+        insuranceQuote,
+        result,
+      }}
     >
       {children}
     </QuoterContext.Provider>
