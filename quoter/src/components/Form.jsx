@@ -1,13 +1,29 @@
 import { Fragment } from "react";
 import { brands, years, plans } from "../constants";
 import useQuoter from "../hooks/useQuoter";
+import Error from "./Error";
 
 const Form = () => {
-  const { data, handleChangeData } = useQuoter();
+  const { data, handleChangeData, error, setError } = useQuoter();
+
+  //Esta función solo la necesitamos en este componente. Por tanto, se define aqui y
+  // no el provider
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (Object.values(data).includes("")) {
+      setError("Todos los campos son obligatorios");
+      return;
+    }
+    setError("");
+
+    // TODO: Quoter
+  };
 
   return (
     <>
-      <form>
+      {error && <Error />}
+      <form onSubmit={handleSubmit}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
             Marca

@@ -4,20 +4,22 @@ const QuoterContext = createContext();
 
 const QuoterProvider = ({ children }) => {
   const [data, setData] = useState({
-    brand: '',
-    year: '',
-    plan:''
-  })
+    brand: "",
+    year: "",
+    plan: "",
+  });
+
+  const [error, setError] = useState("");
 
   const handleChangeData = (e) => {
     setData({
       ...data,
-      [e.target.name] : e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <QuoterContext.Provider value={{ data, handleChangeData }}>
+    <QuoterContext.Provider value={{ data, handleChangeData, error, setError }}>
       {children}
     </QuoterContext.Provider>
   );
