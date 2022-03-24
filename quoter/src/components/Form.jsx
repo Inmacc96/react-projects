@@ -4,7 +4,8 @@ import useQuoter from "../hooks/useQuoter";
 import Error from "./Error";
 
 const Form = () => {
-  const { data, handleChangeData, error, setError } = useQuoter();
+  const { data, handleChangeData, error, setError, insuranceQuote } =
+    useQuoter();
 
   //Esta función solo la necesitamos en este componente. Por tanto, se define aqui y
   // no el provider
@@ -18,6 +19,7 @@ const Form = () => {
     setError("");
 
     // TODO: Quoter
+    insuranceQuote();
   };
 
   return (
