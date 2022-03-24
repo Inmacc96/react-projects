@@ -1,12 +1,20 @@
+import { useCallback, useRef } from "react";
 import useQuoter from "../hooks/useQuoter";
 import { brands, plans } from "../constants";
 
 const Result = () => {
   const { result, data } = useQuoter();
   const { brand, plan, year } = data;
+  const yearRef = useRef(year);
 
-  const [nameBrand] = brands.filter((b) => b.id === Number(brand));
-  const [namePlan] = plans.filter((p) => p.id == Number(plan));
+  const [nameBrand] = useCallback(
+    brands.filter((b) => b.id === Number(brand)),
+    [result]
+  );
+  const [namePlan] = useCallback(
+    plans.filter((p) => p.id == Number(plan)),
+    [result]
+  );
 
   if (result === 0) return null;
 
@@ -26,7 +34,7 @@ const Result = () => {
 
       <p className="my-2">
         <span className="font-bold">Año del Auto: </span>
-        {year}
+        {useRef.current}
       </p>
 
       <p className="my-2 text-2xl">
