@@ -1,9 +1,11 @@
 import Form from "./Form";
 import Alert from "./Alert";
+import Lyric from "./Lyric";
+import Spinner from "./Spinner";
 import useLyrics from "../hooks/useLyrics";
 
 const LyricsApp = () => {
-  const { alert } = useLyrics();
+  const { alert, lyric, loading } = useLyrics();
 
   return (
     <>
@@ -12,7 +14,17 @@ const LyricsApp = () => {
       <Form />
 
       <main>
-        {alert && <Alert>{alert}</Alert>}
+        {alert ? (
+          <Alert>{alert}</Alert>
+        ) : loading ? (
+          <Spinner />
+        ) : lyric ? (
+          <Lyric />
+        ) : (
+          <p className="text-center">
+            Busca las letras de tus artistas favoritos
+          </p>
+        )}
       </main>
     </>
   );

@@ -90,3 +90,11 @@ form input[type="submit"]:hover {
   width: auto;
   display: block;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.lyric {
+  white-space: pre-wrap;
+}
