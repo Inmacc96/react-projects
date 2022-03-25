@@ -7,7 +7,7 @@ const Form = () => {
     song: "",
   });
 
-  const { setAlert } = useLyrics();
+  const { setAlert, lyricsSearch } = useLyrics();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +16,10 @@ const Form = () => {
       setAlert("Coloca nombre de artista y canción");
       return;
     }
+    lyricsSearch(search);
     setAlert("");
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <legend>Busca por Artistas y Canción</legend>
