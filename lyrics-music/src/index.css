@@ -82,3 +82,11 @@ form input[type="submit"]:hover {
   cursor: pointer;
   background-color: #6d28d9;
 }
+
+.alert {
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #d51007;
+  width: auto;
+  display: block;
+}

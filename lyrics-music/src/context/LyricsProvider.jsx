@@ -1,9 +1,15 @@
-import { createContext } from "react";
+import { useState, createContext } from "react";
 
 const LyricsContext = createContext();
 
 const LyricsProvider = ({ children }) => {
-  return <LyricsContext.Provider value={{}}>{children}</LyricsContext.Provider>;
+  const [alert, setAlert] = useState("");
+
+  return (
+    <LyricsContext.Provider value={{ alert, setAlert }}>
+      {children}
+    </LyricsContext.Provider>
+  );
 };
 
 export { LyricsProvider };
