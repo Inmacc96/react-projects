@@ -1,0 +1,26 @@
+body {
+  background-color: #fafafa;
+}
+
+header {
+  background-color: #6d28d9;
+  padding: 2rem 0;
+  color: white;
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+  font-weight: bold;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+}
+
+main {
+  margin: 5rem auto 0 auto;
+  max-width: 1000px;
+  width: 90%;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: -1px 15px 62px -35px rgba(0, 0, 0, 0.96);
+  -webkit-box-shadow: -1px 15px 62px -35px rgba(0, 0, 0, 0.96);
+  -moz-box-shadow: -1px 15px 62px -35px rgba(0, 0, 0, 0.96);
+}
