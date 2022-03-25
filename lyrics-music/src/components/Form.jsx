@@ -17,7 +17,6 @@ const Form = () => {
       return;
     }
     lyricsSearch(search);
-    setAlert("");
   };
 
   return (

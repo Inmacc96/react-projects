@@ -15,14 +15,17 @@ const LyricsProvider = ({ children }) => {
       const url = `https://api.lyrics.ovh/v1/${artist}/${song}`;
       const { data } = await axios(url);
       setLyric(data.lyrics);
+      setAlert("");
     } catch (error) {
-      console.log(error);
+      setAlert("Canción No Encontrada");
     }
     setLoading(false);
   };
 
   return (
-    <LyricsContext.Provider value={{ alert, setAlert, lyricsSearch, lyric, loading }}>
+    <LyricsContext.Provider
+      value={{ alert, setAlert, lyricsSearch, lyric, loading }}
+    >
       {children}
     </LyricsContext.Provider>
   );
