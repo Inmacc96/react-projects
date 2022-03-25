@@ -34,7 +34,7 @@ const Result = () => {
 
       <p className="my-2">
         <span className="font-bold">Año del Auto: </span>
-        {useRef.current}
+        {yearRef.current}
       </p>
 
       <p className="my-2 text-2xl">
@@ -46,3 +46,4 @@ const Result = () => {
 };
 
 export default Result;
+
