@@ -10,12 +10,12 @@ const LyricsProvider = ({ children }) => {
 
   const lyricsSearch = async (search) => {
     setLoading(true);
+    setAlert("");
     try {
       const { artist, song } = search;
       const url = `https://api.lyrics.ovh/v1/${artist}/${song}`;
       const { data } = await axios(url);
       setLyric(data.lyrics);
-      setAlert("");
     } catch (error) {
       setAlert("Canción No Encontrada");
     }
