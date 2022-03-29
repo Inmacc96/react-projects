@@ -4,6 +4,20 @@ body {
   font-size: 1.6rem;
 }
 
+header{
+  background-color: #0ea5e9;
+  padding: 1.5rem;
+  border-bottom: 1rem solid #0284c7;
+}
+
+header h1{
+  color: white;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  margin: 0;
+}
+
 .two-cols {
   display: grid;
   gap: 4rem;
