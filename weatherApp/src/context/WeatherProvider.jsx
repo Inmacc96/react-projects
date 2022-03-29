@@ -9,12 +9,18 @@ const WeatherProvider = ({ children }) => {
     country: "",
   });
   const [result, setResult] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [notResult, setNotResult] = useState("");
 
   const dataSearch = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
   const consultWeather = async (data) => {
+    setLoading(true);
+    setResult({});
+    setNotResult("");
+    
     try {
       const { city, country } = data;
 
@@ -31,13 +37,22 @@ const WeatherProvider = ({ children }) => {
 
       setResult(weather);
     } catch (error) {
-      console.log(error);
+      setNotResult("No hay resultados");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <WeatherContext.Provider
-      value={{ search, dataSearch, consultWeather, result }}
+      value={{
+        search,
+        dataSearch,
+        consultWeather,
+        result,
+        loading,
+        notResult,
+      }}
     >
       {children}
     </WeatherContext.Provider>
