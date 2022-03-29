@@ -9,11 +9,15 @@ const WeatherProvider = ({ children }) => {
   });
 
   const dataSearch = (e) => {
-    setSearch({ ...search, [e.target.name]: e.target.name });
+    setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
+  const consultWeather = data => {
+      console.log(data)
+  }
+
   return (
-    <WeatherContext.Provider value={{ search, dataSearch }}>
+    <WeatherContext.Provider value={{ search, dataSearch, consultWeather }}>
       {children}
     </WeatherContext.Provider>
   );
