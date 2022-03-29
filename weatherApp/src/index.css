@@ -1,0 +1,21 @@
+body{
+  font-family: 'Hubballi', cursive;
+  background-color: #f1f5f9;
+  font-size: 1.6rem;
+}
+
+.two-cols{
+  display: grid;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .two-cols{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+main {
+  margin: 4rem auto;
+  max-width: 1200px;
+}
