@@ -1,16 +1,16 @@
-body{
-  font-family: 'Hubballi', cursive;
+body {
+  font-family: "Hubballi", cursive;
   background-color: #f1f5f9;
   font-size: 1.6rem;
 }
 
-.two-cols{
+.two-cols {
   display: grid;
   gap: 4rem;
 }
 
 @media (min-width: 768px) {
-  .two-cols{
+  .two-cols {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -18,4 +18,61 @@ body{
 main {
   margin: 4rem auto;
   max-width: 1200px;
+}
+
+.container {
+  margin: 0 auto 2rem auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 4rem;
+  -webkit-box-shadow: 0px 10px 33px -17px rgba(173, 173, 173, 1);
+  -moz-box-shadow: 0px 10px 33px -17px rgba(173, 173, 173, 1);
+  box-shadow: 0px 10px 33px -17px rgba(173, 173, 173, 1);
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+.field {
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+}
+
+.field label {
+  display: block;
+}
+
+.field input,
+.field select {
+  all: unset;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+input[type="submit"]{
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 1rem 3rem;
+  margin: 2rem auto 0 auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background-colot .3s ease;
+}
+
+@media (min-width:768px){
+  input[type="submit"]{
+    max-width: 400px;
+}
+
+input[type="submit"]:hover{
+  background-color: #0369a1;
+  cursor: pointer;
 }
