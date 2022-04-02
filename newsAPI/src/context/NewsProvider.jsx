@@ -16,7 +16,6 @@ const NewsProvider = ({ children }) => {
       }`;
 
       const { data } = await axios(url);
-      console.log(data);
       setNews(data.articles);
       setTotalNews(data.totalResults);
       setPage(1);
@@ -31,9 +30,7 @@ const NewsProvider = ({ children }) => {
       }`;
 
       const { data } = await axios(url);
-      console.log(data);
       setNews(data.articles);
-      setTotalNews(data.totalResults);
     };
     APIQuery();
   }, [page]);
