@@ -1,10 +1,31 @@
-import { Button, Form, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 import useCategories from "../hooks/useCategories";
 
 const DrinksForm = () => {
+  const [search, setSearch] = useState({
+    nameofdrink: "",
+    category: "",
+  });
+  const [alert, setAlert] = useState("");
   const { categories } = useCategories();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (Object.values(search).includes("")) {
+      setAlert("Todos los campos son obligatorios");
+      return;
+    }
+    setAlert("");
+  };
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
+      {alert && (
+        <Alert variant="danger" className="text-center">
+          {alert}
+        </Alert>
+      )}
       <Row>
         <Col md={6}>
           <Form.Group className="mb-3">
@@ -15,6 +36,13 @@ const DrinksForm = () => {
               type="text"
               placeholder="Eg: Tequila, Vodka, etc"
               name="nameofdrink"
+              value={search.nameofdrink}
+              onChange={(e) =>
+                setSearch({
+                  ...search,
+                  [e.target.name]: e.target.value,
+                })
+              }
             ></Form.Control>
           </Form.Group>
         </Col>
@@ -22,7 +50,17 @@ const DrinksForm = () => {
           <Form.Group className="mb-3">
             <Form.Label htmlFor="category">Drink Category</Form.Label>
 
-            <Form.Select id="category" name="category">
+            <Form.Select
+              id="category"
+              name="category"
+              value={search.category}
+              onChange={(e) =>
+                setSearch({
+                  ...search,
+                  [e.target.name]: e.target.value,
+                })
+              }
+            >
               <option> - Select Category - </option>
               {categories.map((category) => (
                 <option key={category.strCategory} value={category.strCategory}>
@@ -36,7 +74,11 @@ const DrinksForm = () => {
 
       <Row className="justify-content-end">
         <Col md={3}>
-          <Button variant="danger" className="text-uppercase w-100">
+          <Button
+            variant="danger"
+            className="text-uppercase w-100"
+            type="submit"
+          >
             Search of drinks
           </Button>
         </Col>
