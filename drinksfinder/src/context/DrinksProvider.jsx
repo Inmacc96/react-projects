@@ -7,7 +7,7 @@ const DrinksProvider = ({ children }) => {
   const [drinks, setDrinks] = useState([]);
   const [modal, setModal] = useState(false);
   const [drinkId, setDrinkId] = useState(null);
-  const [recipe, setRecipe] = useState([]);
+  const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
     const getRecipe = async () => {
