@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import DrinksCarousel from "./components/DrinksCarousel";
 import DrinksForm from "./components/DrinksForm";
 import DrinksList from "./components/DrinksList";
 import DrinkModal from "./components/DrinkModal";
@@ -14,6 +15,8 @@ function App() {
         </header>
 
         <Container className="mt-5">
+          <DrinksCarousel />
+
           <DrinksForm />
 
           <DrinksList />

@@ -9,7 +9,18 @@ const DrinksProvider = ({ children }) => {
   const [drinkId, setDrinkId] = useState(null);
   const [recipe, setRecipe] = useState({});
   const [loading, setLoading] = useState(false);
-  const [favDrinks, setFavDrinks] = useState([]);
+  const [randomDrinks, setRandomDrinks] = useState([]);
+
+  useEffect(() => {
+    const getRandomDrinks = async () => {
+      const url =
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+
+      const { data } = await axios(url);
+      setRandomDrinks(data.drinks.slice(5, 11));
+    };
+    getRandomDrinks();
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -61,10 +72,7 @@ const DrinksProvider = ({ children }) => {
     setDrinkId(id);
   };
 
-  const addFavDrink = (id) => {
-    const favDrink = drinks.filter((drink) => drink.idDrink === id);
-    setFavDrinks([...favDrinks, favDrink[0]]);
-  };
+
 
   return (
     <DrinksContext.Provider
@@ -76,7 +84,7 @@ const DrinksProvider = ({ children }) => {
         handleDrinkIdClick,
         recipe,
         loading,
-        addFavDrink,
+        randomDrinks,
       }}
     >
       {children}
