@@ -9,6 +9,7 @@ const DrinksProvider = ({ children }) => {
   const [drinkId, setDrinkId] = useState(null);
   const [recipe, setRecipe] = useState({});
   const [loading, setLoading] = useState(false);
+  const [favDrinks, setFavDrinks] = useState([]);
   const [randomDrinks, setRandomDrinks] = useState([]);
 
   useEffect(() => {
@@ -72,7 +73,21 @@ const DrinksProvider = ({ children }) => {
     setDrinkId(id);
   };
 
+  const addFavDrink = (id) => {
+    const favDrink = drinks.filter((drink) => drink.idDrink === id);
+    if (!favDrinks.includes(favDrink[0])) {
+      setFavDrinks([favDrink[0], ...favDrinks]);
+    }
+  };
 
+  const deleteFavDrink = (id) => {
+    const favDrinksUpdated = favDrinks.filter((drink) => drink.idDrink !== id);
+    setFavDrinks(favDrinksUpdated);
+  };
+
+  const handleFavDrinkClick = () => {
+    setDrinks(favDrinks);
+  };
 
   return (
     <DrinksContext.Provider
@@ -84,6 +99,9 @@ const DrinksProvider = ({ children }) => {
         handleDrinkIdClick,
         recipe,
         loading,
+        addFavDrink,
+        deleteFavDrink,
+        handleFavDrinkClick,
         randomDrinks,
       }}
     >

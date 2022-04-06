@@ -2,7 +2,14 @@ import { Modal, Image, Button } from "react-bootstrap";
 import useDrinks from "../hooks/useDrinks";
 
 const DrinkModal = () => {
-  const { modal, handleModalClick, recipe, loading, addFavDrink } = useDrinks();
+  const {
+    modal,
+    handleModalClick,
+    recipe,
+    loading,
+    addFavDrink,
+    deleteFavDrink,
+  } = useDrinks();
 
   const showIngredients = () => {
     let ingredients = [];
@@ -37,16 +44,28 @@ const DrinkModal = () => {
             <h2>Ingredients and quantities</h2>
             {showIngredients()}
           </div>
-          <Button
-            className="w-100 text-uppercase mt-3"
-            variant="danger"
-            onClick={() => {
-              addFavDrink(recipe.idDrink);
-              handleModalClick();
-            }}
-          >
-            Add to favourites
-          </Button>
+          <div className="d-flex justify-content-between mt-3">
+            <Button
+              className="text-uppercase"
+              variant="dark"
+              onClick={() => {
+                addFavDrink(recipe.idDrink);
+                handleModalClick();
+              }}
+            >
+              Add to favourites
+            </Button>
+            <Button
+              className="text-uppercase"
+              variant="danger"
+              onClick={() => {
+                deleteFavDrink(recipe.idDrink);
+                handleModalClick();
+              }}
+            >
+              Remove from favourites
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
     )

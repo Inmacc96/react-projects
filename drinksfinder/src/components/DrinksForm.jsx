@@ -10,7 +10,7 @@ const DrinksForm = () => {
   });
   const [alert, setAlert] = useState("");
   const { categories } = useCategories();
-  const { getDrink } = useDrinks();
+  const { getDrink, handleFavDrinkClick } = useDrinks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +21,6 @@ const DrinksForm = () => {
     }
     setAlert("");
     getDrink(search);
-    
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -76,7 +75,18 @@ const DrinksForm = () => {
         </Col>
       </Row>
 
-      <Row className="justify-content-end">
+      <Row className="justify-content-between">
+        <Col md={3}>
+          <Button
+            variant="dark"
+            className="text-uppercase w-100 my-4 my-md-0"
+            onClick={() => {
+              handleFavDrinkClick();
+            }}
+          >
+            My favourite drinks
+          </Button>
+        </Col>
         <Col md={3}>
           <Button
             variant="danger"
