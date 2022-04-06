@@ -7,9 +7,9 @@ const DrinksList = () => {
 
   return (
     <Row className="mt-5">
-      {drinks.map((drink) => (
+       { drinks.length ? drinks.map((drink) => (
         <Drink key={drink.idDrink} drink={drink} />
-      ))}
+      )) : <p>TPM</p>} 
     </Row>
   );
 };

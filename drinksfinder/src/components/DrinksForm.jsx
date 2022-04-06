@@ -10,7 +10,7 @@ const DrinksForm = () => {
   });
   const [alert, setAlert] = useState("");
   const { categories } = useCategories();
-  const { getDrink, handleFavDrinkClick } = useDrinks();
+  const { getDrink, handleFavDrinkClick, setIsfavDrinks } = useDrinks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ const DrinksForm = () => {
       return;
     }
     setAlert("");
+    setIsfavDrinks(false);
     getDrink(search);
   };
   return (

@@ -10,6 +10,7 @@ const DrinksProvider = ({ children }) => {
   const [recipe, setRecipe] = useState({});
   const [loading, setLoading] = useState(false);
   const [favDrinks, setFavDrinks] = useState([]);
+  const [isfavDrinks, setIsfavDrinks] = useState(false);
   const [randomDrinks, setRandomDrinks] = useState([]);
 
   useEffect(() => {
@@ -83,9 +84,13 @@ const DrinksProvider = ({ children }) => {
   const deleteFavDrink = (id) => {
     const favDrinksUpdated = favDrinks.filter((drink) => drink.idDrink !== id);
     setFavDrinks(favDrinksUpdated);
+    if (isfavDrinks) {
+      setDrinks(favDrinksUpdated);
+    }
   };
 
   const handleFavDrinkClick = () => {
+    setIsfavDrinks(true);
     setDrinks(favDrinks);
   };
 
@@ -103,6 +108,7 @@ const DrinksProvider = ({ children }) => {
         deleteFavDrink,
         handleFavDrinkClick,
         randomDrinks,
+        setIsfavDrinks,
       }}
     >
       {children}
