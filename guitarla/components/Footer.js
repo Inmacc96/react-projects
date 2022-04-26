@@ -8,6 +8,7 @@ const Footer = () => {
           <nav className={styles.nav}>
             <Link href="/">Inicio</Link>
             <Link href="/aboutus">Nosotros</Link>
+            <Link href="/courses">Cursos</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/store">Tienda</Link>
           </nav>
