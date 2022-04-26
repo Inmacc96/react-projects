@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "../../components/Layout";
 import Image from "next/image";
+import { toast } from "react-toastify";
 import styles from "../../styles/Guitar.module.css";
 
 const Product = ({ guitar, addToCart }) => {
@@ -24,6 +25,7 @@ const Product = ({ guitar, addToCart }) => {
       };
 
       addToCart(guitarSelected);
+      toast.success('Agregado correctamente')
     }
   };
   return (
