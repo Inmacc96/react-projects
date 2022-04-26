@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { formatDate } from "../helpers";
 import styles from "../styles/Cart.module.css";
 
 const Cart = ({ cart, updateAmount, deleteProduct }) => {
@@ -27,8 +28,8 @@ const Cart = ({ cart, updateAmount, deleteProduct }) => {
                   <div>
                     <Image
                       layout="responsive"
-                      width={250}
-                      height={500}
+                      width={product.start_date ? 700 : 250}
+                      height={product.start_date ? 700 : 500}
                       src={product.image}
                       alt={product.name}
                     />
@@ -37,25 +38,33 @@ const Cart = ({ cart, updateAmount, deleteProduct }) => {
                   <div>
                     <p className={styles.name}>{product.name}</p>
                     <div className={styles.amount}>
-                      <p>Cantidad:</p>
-                      <select
-                        value={product.amount}
-                        className={styles.select}
-                        onChange={(e) =>
-                          updateAmount({
-                            id: product.id,
-                            amount: e.target.value,
-                          })
-                        }
-                      >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                      </select>
+                      {product.start_date ? (
+                        <p className={styles.dates}>
+                         {formatDate(product.start_date)} / {formatDate(product.end_date)}
+                        </p>
+                      ) : (
+                        <>
+                          <p>Cantidad:</p>
+                          <select
+                            value={product.amount}
+                            className={styles.select}
+                            onChange={(e) =>
+                              updateAmount({
+                                id: product.id,
+                                amount: e.target.value,
+                              })
+                            }
+                          >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                          </select>
+                        </>
+                      )}
                     </div>
                     <p className={styles.price}>
                       $<span>{product.price}</span>

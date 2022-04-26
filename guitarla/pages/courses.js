@@ -1,11 +1,11 @@
 import Layout from "../components/Layout";
 import CoursesList from "../components/CoursesList";
 
-const Courses = ({ courses }) => {
+const Courses = ({ courses, addToCart }) => {
   return (
     <Layout page="Cursos de guitarras">
       <main className="contenedor">
-        <CoursesList courses={courses} />
+        <CoursesList courses={courses} addToCart={addToCart} />
       </main>
     </Layout>
   );

@@ -1,10 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { formatDate } from "../helpers";
 import styles from "../styles/CoursesTypes.module.css";
 
-const CoursesTypes = ({ course }) => {
-  const { title, description, image, start_date, end_date, price } = course;
+const CoursesTypes = ({ course, addToCart }) => {
+  const { title, description, image, start_date, end_date, price, id } = course;
+
+  const addCourseToCart = () => {
+    const courseSelected = {
+      id,
+      name: title,
+      price,
+      image: image.url,
+      amount: 1,
+      start_date,
+      end_date
+    };
+
+    addToCart(courseSelected);
+    toast.success("Agregado Correctamente");
+  };
+
   return (
     <article>
       <Image
@@ -23,11 +40,11 @@ const CoursesTypes = ({ course }) => {
           Fecha final: <span>{formatDate(end_date)}</span>
         </p>
         <p className={styles.description}>{description}</p>
-        <p className={styles.price}>
-         $ {price}
-        </p>
+        <p className={styles.price}>$ {price}</p>
         <Link href="#">
-          <a className={styles.link}>Comprar Ahora</a>
+          <a className={styles.link} onClick={addCourseToCart}>
+            Comprar Ahora
+          </a>
         </Link>
       </div>
     </article>

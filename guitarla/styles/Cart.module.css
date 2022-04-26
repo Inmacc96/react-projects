@@ -37,6 +37,10 @@
   font-size: 2.2rem;
 }
 
+.dates{
+  color: #aaa;
+}
+
 .amount {
   display: flex;
   align-items: center;
