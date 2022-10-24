@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { editProductAction } from "../actions/productsActions";
 
 const EditProduct = () => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   //Producto a editar
   const productEdit = useSelector((state) => state.products.productEdit);
@@ -13,7 +19,15 @@ const EditProduct = () => {
       setProductName(productEdit.name);
       setPrice(productEdit.price);
     }
-  }, []);
+  }, [productEdit]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(editProductAction({ name: productName, price, id: productEdit.id }));
+
+    navigate("/")
+  };
 
   if (!productEdit) return;
   return (
@@ -25,7 +39,7 @@ const EditProduct = () => {
               Edit New Product
             </h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Product Name</label>
                 <input
