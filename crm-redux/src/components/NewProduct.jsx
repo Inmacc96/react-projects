@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 // useDispatch: Para mandar a llamar las acciones de Redux
 // useSelector:  Para acceder al state dentro del componente
@@ -6,26 +7,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { createNewProductAction } from "../actions/productsActions";
 
 const NewProduct = () => {
+  //state locales del componente
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
 
   //Utilizar usedispatch y te duelve una función
   const dispatch = useDispatch();
 
   //Mandar llamar el action de productsAction
-  const addProduct = () => {
+  const addProduct = (product) => {
     //dispatch manda a ejecutar createNewProductAction
-    dispatch(createNewProductAction())
+    dispatch(createNewProductAction(product))
   }
 
   //Cuando el usuario haga submit
   const handleSubmit = e => {
     e.preventDefault();
 
-    //Validar formulario
+    // Validar formulario
+    if (name.trim() === "" || price <= 0) {
+      return;
+    }
 
-    // Si no hay errores
-
-    //Crear el nuevo producto
-    addProduct()
+    // Si no hay errores, Crear el nuevo producto
+    addProduct({
+      name,
+      price
+    })
   }
   return (
     <div className="row justify-content-center">
@@ -44,6 +52,8 @@ const NewProduct = () => {
                   className="form-control"
                   placeholder="Product Name"
                   name="product-name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                 />
               </div>
 
@@ -54,6 +64,8 @@ const NewProduct = () => {
                   className="form-control"
                   placeholder="Product Price"
                   name="product-price"
+                  value={price}
+                  onChange={e => setPrice(Number(e.target.value))}
                 />
               </div>
 
