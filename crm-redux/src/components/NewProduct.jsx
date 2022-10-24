@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // useDispatch: Para mandar a llamar las acciones de Redux
 // useSelector:  Para acceder al state dentro del componente
@@ -10,6 +11,8 @@ const NewProduct = () => {
   //state locales del componente
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+
+  const navigate = useNavigate();
 
   //Utilizar usedispatch y te devuelve una función
   const dispatch = useDispatch();
@@ -38,6 +41,9 @@ const NewProduct = () => {
       name,
       price,
     });
+
+    //Redireccionar a home
+    navigate("/")
   };
   return (
     <div className="row justify-content-center">
