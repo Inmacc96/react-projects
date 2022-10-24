@@ -1,4 +1,11 @@
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from "../types";
+import {
+  ADD_PRODUCT,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_ERROR,
+  START_DOWNLOAD_PRODUCTS,
+  DOWNLOAD_PRODUCTS_SUCCESS,
+  DOWNLOAD_PRODUCTS_ERROR,
+} from "../types";
 
 // Cada reducer tiene su propio state
 const initialState = {
@@ -10,6 +17,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
+    case START_DOWNLOAD_PRODUCTS:
       return {
         ...state,
         loading: action.payload,
@@ -26,6 +34,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: action.payload,
       };
+
     default:
       return state;
   }

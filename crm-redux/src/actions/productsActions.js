@@ -1,9 +1,15 @@
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from "../types";
+import {
+  ADD_PRODUCT,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_ERROR,
+  START_DOWNLOAD_PRODUCTS,
+  DOWNLOAD_PRODUCTS_SUCCESS,
+  DOWNLOAD_PRODUCTS_ERROR,
+} from "../types";
 import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
 
 // Crear nuevos productos
-
 export function createNewProductAction(product) {
   return async (dispatch) => {
     dispatch(addProduct());
@@ -26,8 +32,8 @@ export function createNewProductAction(product) {
       Swal.fire({
         icon: "error",
         title: "There was an error",
-        text: "There was an error, please try again"
-      })
+        text: "There was an error, please try again",
+      });
     }
   };
 }
@@ -48,3 +54,15 @@ const addProductError = (status) => ({
   type: ADD_PRODUCT_ERROR,
   payload: status,
 });
+
+// Función que descarga los productos de la base de datos
+export function getProductsAction() {
+  return async (dispatch) => {
+    dispatch(downloadProducts());
+  };
+}
+
+const downloadProducts = () => {
+  type: START_DOWNLOAD_PRODUCTS;
+  payload: true;
+};
