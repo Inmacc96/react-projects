@@ -93,10 +93,27 @@ const downloadProductError = () => ({
 export function deleteProductAction(id) {
   return async (dispatch) => {
     dispatch(getProductDelete(id));
+
+    try {
+      await clientAxios.delete(`/products/${id}`);
+      dispatch(deleteProductSuccess());
+    } catch (err) {
+      console.log(err);
+      dispatch(deleteProductError());
+    }
   };
 }
 
 const getProductDelete = (id) => ({
   type: GET_PRODUCT_DELETE,
   payload: id,
+});
+
+const deleteProductSuccess = () => ({
+  type: DELETED_PRODUCT_SUCCESS,
+});
+
+const deleteProductError = () => ({
+  type: DELETED_PRODUCT_ERROR,
+  payload: true,
 });
