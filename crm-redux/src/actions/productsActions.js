@@ -59,10 +59,29 @@ const addProductError = (status) => ({
 export function getProductsAction() {
   return async (dispatch) => {
     dispatch(downloadProducts());
+
+    try {
+      const { data } = await clientAxios.get("/products2");
+
+      dispatch(downloadProductSuccess(data));
+    } catch (err) {
+      console.log(err);
+      dispatch(downloadProductError());
+    }
   };
 }
 
 const downloadProducts = () => ({
   type: START_DOWNLOAD_PRODUCTS,
+  payload: true,
+});
+
+const downloadProductSuccess = (products) => ({
+  type: DOWNLOAD_PRODUCTS_SUCCESS,
+  payload: products,
+});
+
+const downloadProductError = () => ({
+  type: DOWNLOAD_PRODUCTS_ERROR,
   payload: true,
 });
