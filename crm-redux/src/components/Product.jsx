@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 //Redux
 import { useDispatch } from "react-redux";
-import { deleteProductAction } from "../actions/productsActions";
+import { deleteProductAction, getProductEditAction } from "../actions/productsActions";
 
 const Product = ({ product }) => {
   const { name, price, id } = product;
@@ -31,6 +31,7 @@ const Product = ({ product }) => {
   };
 
   const redirectEdit = (product) => {
+    dispatch(getProductEditAction(product))
     navigate(`/products/edit/${product.id}`);
   };
 
