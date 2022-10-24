@@ -1,4 +1,20 @@
+import { useEffect } from "react";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { getProductsAction } from "../actions/productsActions";
+
 const Products = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //Consultar la API
+    const getProducts = () => {
+      dispatch(getProductsAction());
+    };
+
+    getProducts();
+  }, []);
+
   return (
     <>
       <h2 className="text-center my-5">Desde products.js</h2>

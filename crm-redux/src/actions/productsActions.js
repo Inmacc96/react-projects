@@ -62,7 +62,7 @@ export function getProductsAction() {
   };
 }
 
-const downloadProducts = () => {
-  type: START_DOWNLOAD_PRODUCTS;
-  payload: true;
-};
+const downloadProducts = () => ({
+  type: START_DOWNLOAD_PRODUCTS,
+  payload: true,
+});
