@@ -1,10 +1,15 @@
 import { useEffect } from "react";
+import Product from "./Product";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsAction } from "../actions/productsActions";
 
+
 const Products = () => {
   const dispatch = useDispatch();
+
+  //Obtener el state
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
     //Consultar la API
@@ -27,7 +32,13 @@ const Products = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {products.length === 0
+            ? "There are no products"
+            : products.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+        </tbody>
       </table>
     </>
   );
