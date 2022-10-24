@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // useDispatch: Para mandar a llamar las acciones de Redux
 // useSelector:  Para acceder al state dentro del componente
@@ -11,17 +11,21 @@ const NewProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
-  //Utilizar usedispatch y te duelve una función
+  //Utilizar usedispatch y te devuelve una función
   const dispatch = useDispatch();
+
+  //Acceder al state del store
+  const loading = useSelector((state) => state.products.loading);
+  const error = useSelector((state) => state.products.error);
 
   //Mandar llamar el action de productsAction
   const addProduct = (product) => {
     //dispatch manda a ejecutar createNewProductAction
-    dispatch(createNewProductAction(product))
-  }
+    dispatch(createNewProductAction(product));
+  };
 
   //Cuando el usuario haga submit
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validar formulario
@@ -32,9 +36,9 @@ const NewProduct = () => {
     // Si no hay errores, Crear el nuevo producto
     addProduct({
       name,
-      price
-    })
-  }
+      price,
+    });
+  };
   return (
     <div className="row justify-content-center">
       <div className="col-md-8">
@@ -53,7 +57,7 @@ const NewProduct = () => {
                   placeholder="Product Name"
                   name="product-name"
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -65,7 +69,7 @@ const NewProduct = () => {
                   placeholder="Product Price"
                   name="product-price"
                   value={price}
-                  onChange={e => setPrice(Number(e.target.value))}
+                  onChange={(e) => setPrice(Number(e.target.value))}
                 />
               </div>
 
@@ -76,6 +80,12 @@ const NewProduct = () => {
                 Add Product
               </button>
             </form>
+
+            {loading && <p>Loading...</p>}
+
+            {error && (
+              <p className="alert alert-danger p-2 mt-4 text-center">There was an error</p>
+            )}
           </div>
         </div>
       </div>
