@@ -24,6 +24,11 @@
       "name": "Strawberry Juice",
       "price": "200",
       "id": 5
+    },
+    {
+      "name": "Fruit Juice",
+      "price": 300,
+      "id": 6
     }
   ]
 }
