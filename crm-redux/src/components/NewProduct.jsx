@@ -21,6 +21,7 @@ const NewProduct = () => {
   //Acceder al state del store
   const loading = useSelector((state) => state.products.loading);
   const error = useSelector((state) => state.products.error);
+  const alert = useSelector((state) => state.alert.alert);
 
   //Mandar llamar el action de productsAction
   const addProduct = (product) => {
@@ -36,10 +37,10 @@ const NewProduct = () => {
     if (name.trim() === "" || price <= 0) {
       const alert = {
         msg: "All fields are required",
-        classes: "alert alert-danger text-center text-uppercase p3"
-      }
-      dispatch(displayAlertAction(alert))
-      
+        classes: "alert alert-danger text-center text-uppercase p3",
+      };
+      dispatch(displayAlertAction(alert));
+
       return;
     }
 
@@ -60,6 +61,8 @@ const NewProduct = () => {
             <h2 className="text-center mb-4 font-weight-bold">
               Add New Product
             </h2>
+
+            {alert && <p className={alert.classes}>{alert.msg}</p>}
 
             <form onSubmit={handleSubmit}>
               <div className="form-group">
