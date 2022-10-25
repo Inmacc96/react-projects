@@ -9,5 +9,16 @@ export function displayAlertAction(alert) {
 
 const displayAlert = (alert) => ({
   type: DISPLAY_ALERT,
-  payload: alert
+  payload: alert,
+});
+
+//Oculta una alerta
+export function hideAlertAction() {
+  return (dispatch) => {
+    dispatch(hideAlert());
+  };
+}
+
+const hideAlert = () => ({
+  type: HIDE_ALERT,
 });

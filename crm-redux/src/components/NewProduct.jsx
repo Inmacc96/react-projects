@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //Actions de REDUX
 import { createNewProductAction } from "../actions/productsActions";
-import { displayAlertAction } from "../actions/alertAction";
+import { displayAlertAction, hideAlertAction } from "../actions/alertAction";
 
 const NewProduct = () => {
   //state locales del componente
@@ -44,7 +44,10 @@ const NewProduct = () => {
       return;
     }
 
-    // Si no hay errores, Crear el nuevo producto
+    // Si no hay errores
+    dispatch(hideAlertAction())
+
+    // Crear el nuevo producto
     addProduct({
       name,
       price,

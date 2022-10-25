@@ -6,13 +6,18 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-    switch(action.type){
-        case DISPLAY_ALERT:
-            return {
-                ...state,
-                alert: action.payload
-            }
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case DISPLAY_ALERT:
+      return {
+        ...state,
+        alert: action.payload,
+      };
+    case HIDE_ALERT:
+      return {
+        ...state,
+        alert: null,
+      };
+    default:
+      return state;
+  }
 }
