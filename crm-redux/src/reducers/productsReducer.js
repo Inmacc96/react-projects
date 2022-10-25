@@ -61,7 +61,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         products: state.products.filter(
-          (product) => product.id !== state.deletedProduct
+          (product) => product.id !== state.productDelete
         ),
         productDelete: null,
       };
