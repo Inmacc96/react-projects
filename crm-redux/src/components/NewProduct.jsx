@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //Actions de REDUX
 import { createNewProductAction } from "../actions/productsActions";
+import { displayAlertAction } from "../actions/alertAction";
 
 const NewProduct = () => {
   //state locales del componente
@@ -33,6 +34,12 @@ const NewProduct = () => {
 
     // Validar formulario
     if (name.trim() === "" || price <= 0) {
+      const alert = {
+        msg: "All fields are required",
+        classes: "alert alert-danger text-center text-uppercase p3"
+      }
+      dispatch(displayAlertAction(alert))
+      
       return;
     }
 
@@ -43,7 +50,7 @@ const NewProduct = () => {
     });
 
     //Redireccionar a home
-    navigate("/")
+    navigate("/");
   };
   return (
     <div className="row justify-content-center">
@@ -90,7 +97,9 @@ const NewProduct = () => {
             {loading && <p>Loading...</p>}
 
             {error && (
-              <p className="alert alert-danger p-2 mt-4 text-center">There was an error</p>
+              <p className="alert alert-danger p-2 mt-4 text-center">
+                There was an error
+              </p>
             )}
           </div>
         </div>
