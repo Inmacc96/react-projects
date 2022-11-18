@@ -1,16 +1,30 @@
-import { useNavigate, Form } from "react-router-dom";
+import { useNavigate, useActionData, Form } from "react-router-dom";
 import FormCustomer from "../components/FormCustomer";
+import Error from "../components/Error";
 
 export async function action({ request }) {
   const formData = await request.formData();
 
   const data = Object.fromEntries(formData);
 
-  console.log(data);
+  // Validation
+  const errors = [];
+  if (Object.values(data).includes("")) {
+    errors.push("All fields are required");
+  }
+
+  // Retornar datos si hay errores
+  if (Object.keys(errors).length) {
+    return errors;
+  }
 }
 
 const NewCustomer = () => {
   const navigate = useNavigate();
+
+  const errors = useActionData();
+
+  console.log(errors);
   return (
     <>
       <h1 className="font-black text-4xl text-blue-900">New Customer</h1>
@@ -26,6 +40,9 @@ const NewCustomer = () => {
       </div>
 
       <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20">
+        {errors?.length &&
+          errors.map((error, i) => <Error key={i}>{error}</Error>)}
+
         <Form method="POST">
           <FormCustomer />
 
