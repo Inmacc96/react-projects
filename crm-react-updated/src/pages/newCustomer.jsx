@@ -1,8 +1,12 @@
 import { useNavigate, Form } from "react-router-dom";
 import FormCustomer from "../components/FormCustomer";
 
-export function action() {
-  console.log("submit del formulario...");
+export async function action({ request }) {
+  const formData = await request.formData();
+
+  const data = Object.fromEntries(formData);
+
+  console.log(data);
 }
 
 const NewCustomer = () => {
