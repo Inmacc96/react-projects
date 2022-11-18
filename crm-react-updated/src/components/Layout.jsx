@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -7,6 +7,21 @@ const Layout = () => {
         <h2 className="text-4xl font-black text-center text-white">
           CRM - Customers
         </h2>
+
+        <nav className="mt-10">
+          <Link
+            to="/"
+            className="text-2xl block mt-2 hover:text-blue-300 text-white"
+          >
+            Customers
+          </Link>
+          <Link
+            to="/customer/new"
+            className="text-2xl block mt-2 hover:text-blue-300 text-white"
+          >
+            New Customer
+          </Link>
+        </nav>
       </aside>
 
       <main className="md:w-3/4 p-10 md:h-screen overflow-scroll">
