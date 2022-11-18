@@ -1,4 +1,4 @@
-const Form = () => {
+const FormCustomer = () => {
   return (
     <>
       <div className="mb-4">
@@ -84,4 +84,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormCustomer;
