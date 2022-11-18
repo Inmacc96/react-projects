@@ -1,7 +1,7 @@
 {
   "customers": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Juan",
       "phone": 102013313,
       "email": "juan@juan.com",
