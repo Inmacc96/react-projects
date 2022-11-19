@@ -51,17 +51,17 @@ const FormCustomer = () => {
 
       <div className="mb-4">
         <label
-          htmlFor="phone-number"
+          htmlFor="phone"
           className="text-gray-800 uppercase font-bold text-lg"
         >
           Phone number
         </label>
         <input
           type="text"
-          id="phone-number"
+          id="phone"
           placeholder="Client's phone number"
           className="block w-full bg-gray-50 p-3 mt-2"
-          name="phone-number"
+          name="phone"
         />
       </div>
       <div className="mb-4">
