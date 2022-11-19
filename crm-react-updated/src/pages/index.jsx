@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import Customer from "../components/Customer";
 import { getCustomers } from "../api/customers";
 
-export function loader() {
-  const customers = getCustomers();
+export async function loader() {
+  const customers = await getCustomers();
 
   return customers;
 }
