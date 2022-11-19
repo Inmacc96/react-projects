@@ -1,4 +1,4 @@
-const FormCustomer = () => {
+const FormCustomer = ({ customer }) => {
   return (
     <>
       <div className="mb-4">
@@ -14,6 +14,7 @@ const FormCustomer = () => {
           placeholder="Client's name"
           className="block w-full bg-gray-50 p-3 mt-2"
           name="name"
+          defaultValue={customer?.name}
         />
       </div>
 
@@ -30,6 +31,7 @@ const FormCustomer = () => {
           placeholder="Client's company"
           className="block w-full bg-gray-50 p-3 mt-2"
           name="company"
+          defaultValue={customer?.company}
         />
       </div>
 
@@ -46,6 +48,7 @@ const FormCustomer = () => {
           placeholder="Client's email"
           className="block w-full bg-gray-50 p-3 mt-2"
           name="email"
+          defaultValue={customer?.email}
         />
       </div>
 
@@ -62,6 +65,7 @@ const FormCustomer = () => {
           placeholder="Client's phone number"
           className="block w-full bg-gray-50 p-3 mt-2"
           name="phone"
+          defaultValue={customer?.phone}
         />
       </div>
       <div className="mb-4">
@@ -78,6 +82,7 @@ const FormCustomer = () => {
           className="block w-full bg-gray-50 p-3 mt-2 h-40"
           placeholder="Other comments from the customer"
           name="notes"
+          defaultValue={customer?.notes}
         />
       </div>
     </>
