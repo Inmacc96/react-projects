@@ -33,3 +33,21 @@ export async function getCustomer(id) {
 
   return result;
 }
+
+export async function updateCustomer(id, data) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/customers/${id}`;
+
+    const response = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+}

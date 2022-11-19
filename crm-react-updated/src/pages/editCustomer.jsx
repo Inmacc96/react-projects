@@ -1,7 +1,14 @@
-import { Form, useNavigate } from "react-router-dom";
+import {
+  Form,
+  redirect,
+  useActionData,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 import { getCustomer } from "../api/customers";
-import { useLoaderData } from "react-router-dom";
 import FormCustomer from "../components/FormCustomer";
+import { updateCustomer } from "../api/customers";
+import Error from "../components/Error";
 
 export async function loader({ params }) {
   // Obtener los datos del cliente
@@ -20,10 +27,44 @@ export async function loader({ params }) {
   return customer;
 }
 
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  const id = params.customerId;
+
+  const email = formData.get("email");
+
+  // Validation
+  const errors = [];
+  if (Object.values(data).includes("")) {
+    errors.push("All fields are required");
+  }
+
+  let regex = new RegExp(
+    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+  );
+
+  if (!regex.test(email)) {
+    errors.push("Emails is invalid");
+  }
+
+  // Retornar datos si hay errores
+  if (Object.keys(errors).length) {
+    return errors;
+  }
+
+  // Enviar los nuevos datos al servidor
+  await updateCustomer(id, data);
+
+  return redirect("/");
+}
+
 const EditCustomer = () => {
   const navigate = useNavigate();
 
   const customer = useLoaderData();
+
+  const errors = useActionData();
 
   return (
     <>
@@ -40,8 +81,8 @@ const EditCustomer = () => {
       </div>
 
       <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20">
-        {/*       {errors?.length &&
-          errors.map((error, i) => <Error key={i}>{error}</Error>)} */}
+        {errors?.length &&
+          errors.map((error, i) => <Error key={i}>{error}</Error>)}
 
         <Form method="POST" noValidate>
           <FormCustomer customer={customer} />
@@ -49,7 +90,7 @@ const EditCustomer = () => {
           <input
             type="submit"
             className="mt-5 w-full bg-blue-800 p-3 uppercase font-bold text-white text-lg"
-            value="Register customer"
+            value="Save Changes"
           />
         </Form>
       </div>

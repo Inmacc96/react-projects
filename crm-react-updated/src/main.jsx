@@ -8,6 +8,7 @@ import NewCustomer, { action as newCustomerAction } from "./pages/newCustomer";
 import ErrorPage from "./components/ErrorPage";
 import EditCustomer, {
   loader as editCustomerLoader,
+  action as updateCustomerAction,
 } from "./pages/editCustomer";
 
 const router = createBrowserRouter([
@@ -25,12 +26,13 @@ const router = createBrowserRouter([
         path: "/customer/new",
         element: <NewCustomer />,
         action: newCustomerAction,
-        errorElement: <ErrorPage />
+        errorElement: <ErrorPage />,
       },
       {
         path: "/customer/:customerId/edit",
         element: <EditCustomer />,
         loader: editCustomerLoader,
+        action: updateCustomerAction,
         errorElement: <ErrorPage />,
       },
     ],
