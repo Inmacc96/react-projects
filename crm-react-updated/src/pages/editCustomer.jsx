@@ -84,7 +84,7 @@ const EditCustomer = () => {
         {errors?.length &&
           errors.map((error, i) => <Error key={i}>{error}</Error>)}
 
-        <Form method="POST" noValidate>
+        <Form method="PUT" noValidate>
           <FormCustomer customer={customer} />
 
           <input
