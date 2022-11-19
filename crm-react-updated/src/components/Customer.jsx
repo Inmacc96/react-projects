@@ -1,4 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Form, redirect } from "react-router-dom";
+import { deleteCustomer } from "../api/customers";
+
+export async function action({ params }) {
+  const id = params.customerId;
+
+  await deleteCustomer(id);
+
+  return redirect("/");
+}
 
 const Customer = ({ customer }) => {
   const navigate = useNavigate();
@@ -23,10 +32,10 @@ const Customer = ({ customer }) => {
         </p>
       </td>
 
-      <td className="p-6 flex gap-3">
+      <td className="p-6">
         <button
           type="button"
-          className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+          className="bg-blue-600 hover:bg-blue-700 w-full text-white p-2 uppercase font-bold text-xs mt-3"
           onClick={() => {
             navigate(`/customer/${id}/edit`);
           }}
@@ -34,12 +43,22 @@ const Customer = ({ customer }) => {
           Edit
         </button>
 
-        <button
-          type="button"
-          className="text-red-600 hover:text-red-700 uppercase font-bold text-xs"
+        <Form
+          method="POST"
+          action={`/customers/${id}/delete`}
+          onSubmit={() => {
+            if (!confirm("Do you wish to delete this record?")) {
+              e.preventDefault();
+            }
+          }}
         >
-          Delete
-        </button>
+          <button
+            type="submit"
+            className="bg-red-600 hover:bg-red-700 w-full text-white p-2 uppercase font-bold text-xs mt-3"
+          >
+            Delete
+          </button>
+        </Form>
       </td>
     </tr>
   );
